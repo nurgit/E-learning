@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('role_id')->default(1);// 1=Owner, 2=Manager, 3=Renter, 4=Admin
-            $table->integer('status')->default(0);//0=inactive ,1= active 
+            $table->integer('role_id')->default(2);// 1=Owner, 2=Manager, 3=Renter, 4=Admin
+            $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);//0=dlt , 1=not dlt
             $table->string('password');
             $table->rememberToken();
