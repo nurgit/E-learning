@@ -39,15 +39,15 @@
 					</a>
 
 				</li>
-                <li class="{{ 'clients' == request()->path() ? 'active' : ''}}">
+                <li class="{{ 'course' == request()->path() ? 'active' : ''}}">
                     <a href="{{route('admin.courses')}}">
                         <i class="entypo-book"></i>
-                        <span class="title">Courses </span>
+                        <span class="title">Course </span>
                     </a>
 
                 </li>
-                <li class="{{ 'pos' == request()->path() ? 'active' : ''}}">
-                    <a href="{{route('admin.student')}}">
+                <li class="{{ 'student' == request()->path() ? 'active' : ''}}">
+                    <a href="{{url('admin/student')}}">
                         <i class="entypo-users"></i>
                         <span class="title">Student</span>
                     </a>
