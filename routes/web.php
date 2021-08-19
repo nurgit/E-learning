@@ -6,6 +6,7 @@ use App\Http\Controllers\RegistationController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminStudentController;
 use App\Http\Controllers\Admin\AdminCoursesController;
+use App\Http\Controllers\Admin\AdminInstructorController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Auth\LoginController;
@@ -47,12 +48,17 @@ Route::group([ 'prefix'=>'admin' ], function(){
     Route::post('student_store',[AdminStudentController::class,'store']);
     Route::post('student_update',[AdminStudentController::class,'update']);
     Route::post('student_delete',[AdminStudentController::class,'delete']);
-    
-    Route::get('instructor',[AdminController::class,'index'])->name('admin.instructor');
+    //instructor
+    Route::get('instructor',[AdminInstructorController::class,'index'])->name('admin.instructor');
+    Route::post('teacher_store',[AdminInstructorController::class,'store']);
+    Route::post('teacher_update',[AdminInstructorController::class,'update']);
+    Route::post('teacher_delete',[AdminInstructorController::class,'delete']);
+    //Tutorial
     Route::get('tutorial',[AdminController::class,'index'])->name('admin.tutorial');
-//Fatch
+    //Fatch
     Route::post('/get_student_data', [AdminStudentController::class, 'fetch_student_data']);
     Route::post('/get_courses_data', [AdminCoursesController::class, 'fetch_courses_data']);
+    Route::post('/get_teacher_data', [AdminInstructorController::class, 'fetch_teacher_data']);
 
 });
 
