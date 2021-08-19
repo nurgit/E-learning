@@ -39,7 +39,7 @@
 					</a>
 
 				</li>
-                <li class="{{ 'clients' == request()->path() ? 'active' : ''}}">
+                <li class="{{ 'admin.courses' == request()->path() ? 'active' : ''}}">
                     <a href="{{route('admin.courses')}}">
                         <i class="entypo-book"></i>
                         <span class="title">Courses </span>
