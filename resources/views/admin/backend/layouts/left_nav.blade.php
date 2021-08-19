@@ -35,7 +35,7 @@
 				<li class="{{ 'home' == request()->path() ? 'active' : ''}}">
                     <a href="{{route('admin.dashboard')}}">
 						<i class="entypo-home"></i>
-						<span class="title">Inicio</span>
+						<span class="title">Home</span>
 					</a>
 
 				</li>

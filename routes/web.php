@@ -37,8 +37,12 @@ Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 Route::group([ 'prefix'=>'admin' ], function(){
     Route::get('/',[AdminController::class,'index'])->name('admin.dashboard');
-    Route::get('courses',[AdminController::class,'index'])->name('admin.courses');
-
+    //courses
+    Route::get('courses',[AdminCoursesController::class,'index'])->name('admin.courses');
+    Route::post('course_store',[AdminCoursesController::class,'store']);
+    Route::post('course_update',[AdminCoursesController::class,'update']);
+    Route::post('course_delete',[AdminCoursesController::class,'delete']);
+    //student
     Route::get('student',[AdminStudentController::class,'index']);
     Route::post('student_store',[AdminStudentController::class,'store']);
     Route::post('student_update',[AdminStudentController::class,'update']);
@@ -46,8 +50,9 @@ Route::group([ 'prefix'=>'admin' ], function(){
     
     Route::get('instructor',[AdminController::class,'index'])->name('admin.instructor');
     Route::get('tutorial',[AdminController::class,'index'])->name('admin.tutorial');
+//Fatch
     Route::post('/get_student_data', [AdminStudentController::class, 'fetch_student_data']);
-
+    Route::post('/get_courses_data', [AdminCoursesController::class, 'fetch_courses_data']);
 
 });
 

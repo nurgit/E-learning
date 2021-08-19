@@ -1,4 +1,4 @@
-@extends('student.backend.layouts.master')
+@extends('admin.backend.layouts.master')
 @section('page_header','Student')
 @section('page_links')
     <link rel="stylesheet" href="{{ asset('backend/assets/js/datatables/datatables.css') }}">
