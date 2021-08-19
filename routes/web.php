@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RegistationController;
-//Admin
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminStudentController;
 use App\Http\Controllers\Admin\AdminCoursesController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -32,28 +32,29 @@ Route::get('/registation',[RegistationController::class, 'registation'])->name('
 Route::post('/create',[RegistationController::class, 'create'])->name('create');
 
 Route::get('/login', [LoginController::class, 'get_login'])->name('login');
-
+Route::post('/loginCheck',[LoginController::class, 'loginCheck'])->name('loginCheck');
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
-Route::post('/loginCheck',[LoginController::class, 'loginCheck'])->name('loginCheck');
-Route::group([ 'prefix'=>'admin', 'middleware'=>['authCheck',]], function(){
-
-    Route::get('/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
-    Route::get('/courses',[AdminCoursesController::class,'index'])->name('admin.courses');
-    Route::get('student',[AdminController::class,'index'])->name('admin.student');
+Route::group([ 'prefix'=>'admin' ], function(){
+    Route::get('/',[AdminController::class,'index'])->name('admin.dashboard');
+    Route::get('courses',[AdminController::class,'index'])->name('admin.courses');
+    Route::get('student',[AdminStudentController::class,'index']);
+    Route::get('student/store',[AdminStudentController::class,'store']);
     Route::get('instructor',[AdminController::class,'index'])->name('admin.instructor');
     Route::get('tutorial',[AdminController::class,'index'])->name('admin.tutorial');
-   //
+    Route::post('/get_student_data', [AdminStudentController::class, 'fetch_student_data']);
+
+
 });
 
 Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[StudentController::class,'index'])->name('student.dashboard');
-   
+
 });
 //
 Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[TeacherController::class,'index'])->name('teacher.dashboard');
-   
+
 });
 
 //######################################################
@@ -190,5 +191,4 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
 //     Route::post('/get_service_data', [App\Http\Controllers\AddInventoryController::class, 'fetch_service_data']);
 // });
 // Auth::routes();
-
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
