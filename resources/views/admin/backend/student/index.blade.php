@@ -1,5 +1,5 @@
 @extends('student.backend.layouts.master')
-@section('page_header','Inicio')
+@section('page_header','Student')
 @section('page_links')
     <link rel="stylesheet" href="{{ asset('backend/assets/js/datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/js/select2/select2.css') }}">
@@ -26,7 +26,7 @@
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
             <div class="form-group">
-                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Agregar nueva studente</button>
+                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Student</button>
             </div>
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
@@ -45,7 +45,7 @@
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
-                    <form action="{{url('student/store')}}" class="form-horizontal form-groups-bordered validate"
+                    <form action="{{url('admin/student_store')}}" class="form-horizontal form-groups-bordered validate"
                           method="post" role="form" id="add_student_form">
                         @csrf
                         <div class="modal-content">
@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label for="" class="col-sm-3 control-label">Name<span style="color: red">*</span> </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="Name" id="name"
+                                        <input type="text" name="name" id="name"
                                                class="form-control"
                                                data-validate="required"
                                                placeholder=""
@@ -68,7 +68,7 @@
                                     <label for="url" class="col-sm-3 control-label">E-mail</label>
 
                                     <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="telefono" name="telefono" rows="2"
+                                        <textarea class="form-control autogrow" id="student_email" name="student_email" rows="2"
                                                   placeholder=""></textarea>
                                     </div>
                                 </div>
@@ -90,18 +90,18 @@
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
-                    <form action="{{url('student/update')}}" class="form-horizontal form-groups-bordered validate"
+                    <form action="{{url('admin/student_update')}}" class="form-horizontal form-groups-bordered validate"
                           method="post" role="form" id="edit_generic_name_form">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" style="text-align: center">Edit Client</h4>
+                                <h4 class="modal-title" style="text-align: center">Edit Student</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="" class="col-sm-3 control-label">Name <span style="color: red">*</span> </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="student_nombre" id="student_nombre"
+                                        <input type="text" name="student_name" id="student_name"
                                                class="form-control"
                                                data-validate="required"
                                                placeholder=""
@@ -110,92 +110,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Telefono</label>
+                                    <label for="url" class="col-sm-3 control-label">Email</label>
 
                                     <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_telefono" name="student_telefono" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Correo</label>
-
-                                    <div class="col-sm-7">
-                                        <input type="email" name="student_correo" id="student_correo"
-                                               class="form-control"
-                                               placeholder=""
-                                        >
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Estado</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_estado" name="student_estado" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">País</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_pais" name="student_pais" rows="2"
-                                                  placeholder="Ex: Mexico"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Domicilio</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_domicilio" name="student_domicilio" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">C.P</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_codigopostal" name="student_codigopostal" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Colonia</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_colonia" name="student_colonia" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Celular</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_celular" name="student_celular" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">RFC</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_rfc" name="student_rfc" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Contacto</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_contacto" name="student_contacto" rows="2"
-                                                  placeholder=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Comentarios</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="student_comentarios" name="student_comentarios" rows="4"
+                                        <textarea class="form-control autogrow" id="email" name="email" rows="2"
                                                   placeholder=""></textarea>
                                     </div>
                                 </div>
@@ -216,17 +134,18 @@
                  role="dialog" tabindex="-1">
                 <div class="modal-dialog">
 
+
                     <!-- Modal content-->
-                    <form action="{{url('student/delete')}}" class="form-horizontal form-groups-bordered validate"
+                    <form action="{{url('admin/student_delete')}}" class="form-horizontal form-groups-bordered validate"
                           method="post" role="form" id="delete_student_form">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" style="text-align: center; color: #00ffea" >Eliminar studente</h4>
+                                <h4 class="modal-title" style="text-align: center; color: #00ffea" >Delete Student</h4>
                             </div>
                             <div class="modal-body">
                                 <div style="text-align: center">
-                                    <span id="delete_student"></span> El studente será eliminado. Está seguro?
+                                    <span id="delete_student"></span>Student Will be Deleted. Are You Sure !! ?
                                 </div>
                                 <input type="hidden" id="delete_student_id" name="delete_student_id">
                             </div>
@@ -297,20 +216,10 @@
                 minimumResultsForSearch: -1
             });
         }
-        function show_edit_modal(idstudentes, nombre, telefono, correo, estado, pais, domicilio, codigopostal, colonia, celular,  rfc, contacto,  comentarios) {
+        function show_edit_modal(idstudentes, name, email) {
             $('#idstudentes').val(idstudentes);
-            $('#student_nombre').val(nombre);
-            $('#student_telefono').val(telefono);
-            $('#student_correo').val(correo);
-            $('#student_estado').val(estado);
-            $('#student_pais').val(pais);
-            $('#student_domicilio').val(domicilio);
-            $('#student_codigopostal').val(codigopostal);
-            $('#student_colonia').val(colonia);
-            $('#student_celular').val(celular);
-            $('#student_rfc').val(rfc);
-            $('#student_contacto').val(contacto);
-            $('#student_comentarios').val(comentarios);
+            $('#student_name').val(name);
+            $('#email').val(email); 
             $('#edit_student_modal').modal('show');
         }
         function show_delete_modal(idstudentes, nombre) {
