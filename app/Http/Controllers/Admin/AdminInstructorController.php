@@ -43,7 +43,7 @@ class AdminInstructorController extends Controller
         $pass = "welcome123";
         $user->name = $request->add_teacher_name;
         $user->email = $request->add_email;
-        $user->role_id= 2;
+        $user->role_id= 3;
         $user->password = Hash::make($pass);
     
 

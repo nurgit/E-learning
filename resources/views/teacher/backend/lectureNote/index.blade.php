@@ -1,5 +1,5 @@
 @extends('teacher.backend.layouts.master')
-@section('page_header','Dashboard')
+@section('page_header','Lecture Note')
 @section('page_links')
     <link rel="stylesheet" href="{{ asset('backend/assets/js/datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/js/select2/select2.css') }}">
