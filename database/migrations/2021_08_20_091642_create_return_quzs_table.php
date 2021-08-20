@@ -17,7 +17,6 @@ class CreateReturnQuzsTable extends Migration
             $table->id();
             $table->string('return_file');
             $table->float('get_mark', 8, 2)->nullable();
-            $table->string('teacher_comment')->nullable();
             $table->date('submitin_date');	
             $table->integer('quz_id');
             $table->integer('status')->default(1);//0=inactive ,1= active 
