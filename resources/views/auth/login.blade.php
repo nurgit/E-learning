@@ -166,7 +166,7 @@ var baseurl = "{{ url('/post_login') }}";
 						</div>
 
 						<div class="form-group">
-						
+
 						</div>
 
 					</div>
@@ -178,7 +178,7 @@ var baseurl = "{{ url('/post_login') }}";
 
 				<a href="{{ route('registation') }}" class="link">
 					<i class="entypo-lock"></i>
-					Return to Registation Page
+					Go to Registation Page
 				</a>
 
 				<br />

@@ -63,22 +63,22 @@ class LoginController extends Controller
     ]);
 
     $userInfo=User::where('email','=', $request->email)->first();
-    if(! $userInfo){// 
+    if(! $userInfo){//
         return back()->with('failLog', 'We do not recogonize your email address');
     }else{
         if(Hash::check($request->password, $userInfo->password))    {
             $request->session()->put('LoggedUser',$userInfo->id);
-            
 
-                    // Role Id Check 
+
+                    // Role Id Check
                     if($userInfo->role_id==1){
-                        return redirect('admin/dashboard');
+                        return redirect('admin');
                     }elseif($userInfo->role_id==2){
                         return redirect('student/dashboard');
                     }elseif($userInfo->role_id==3){
                         return redirect('teacher/dashboard');
                     }
-            
+
 
         }else{
             return back()->with('failLog','incorret password');
@@ -86,7 +86,7 @@ class LoginController extends Controller
     }
 }
 
-    
+
     public function logout(){
         if(session()->has('LoggedUser')){
            // dd(session());
