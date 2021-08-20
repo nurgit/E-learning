@@ -13,7 +13,7 @@ class Assignment extends Model
         'file',
         'mark',
         'date',
-        'Course_teacher_id',
+        'course_teacher_id',
         'status',
     ];
     use HasFactory;

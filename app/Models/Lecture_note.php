@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Lecture_note extends Model
 {
     protected $fillable = [
-        'note_name',
-        'note',
+        'tutorial_name',
+        'subject',
+        'details',
         'file',
-        'mark',
+        'link',
         'date',
-        'Course_teacher_id',
+        'admin_id',
         'status',
     ];
     use HasFactory;

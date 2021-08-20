@@ -21,7 +21,7 @@ class CreateLectureNotesTable extends Migration
             $table->string('file')->nullable();
             $table->string('link')->nullable();
             $table->date('date');	
-            $table->integer('Course_teacher_id');
+            $table->integer('course_teacher_id');
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->timestamps();
         });

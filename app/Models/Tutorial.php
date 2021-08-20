@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Test extends Model
+class Tutorial extends Model
 {
     protected $fillable = [
-        'test_name',
-        'test_type',
-        'instruction',
+        'tutorial_name',
+        'subject',
+        'details',
         'file',
-        'mark',
+        'link',
         'date',
-        'course_teacher_id',
+        'admin_id',
         'status',
     ];
     use HasFactory;
