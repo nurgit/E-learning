@@ -104,6 +104,9 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     // Recture Note
     Route::get('lectureNote',[StudentLectureNotetController::class,'index']);
 
+    //Fatch
+    Route::post('/get_teacher_data', [StudentTeacherController::class, 'fetch_teacher_data']);
+
 });
 
 //Teacher Group
