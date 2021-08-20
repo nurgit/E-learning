@@ -1,0 +1,31 @@
+@include media-breakpoint-up(sm){
+	.featuresList{
+
+		> li{
+			width: 50%;
+		}
+	}
+
+	.countListItems{
+
+		> li{
+			width: 50%;
+		}
+	}
+
+	.sayQuote{
+
+		.imgHolder{
+			@include size(104px, 102px);
+		}
+
+		.wrap{
+			padding: 40px 60px 40px 90px;
+		}
+
+		.icnQuote{
+			font-size: 11px;
+			@include size(30px);
+		}
+	}
+}

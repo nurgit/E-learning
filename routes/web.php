@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RegistationController;
+
+use App\Http\Controllers\HomeController;
 //Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminStudentController;
@@ -45,6 +47,8 @@ use GuzzleHttp\Middleware;
 //});
 
 //###################################
+Route::get('/', [HomeController::class,'index']);
+
 Route::get('/registation',[RegistationController::class, 'registation'])->name('registation');
 Route::post('/create',[RegistationController::class, 'create'])->name('create');
 

@@ -1,0 +1,78 @@
+@include media-breakpoint-up(lg){
+	h1, .h1{
+		font-size: (45/16) + rem;
+	}
+
+	h3, .h3{
+		font-size: (22/16) + rem;
+	}
+
+	.mainNavigation{
+
+		&,
+		&.navbar-nav{
+
+			.nav-item{
+
+				+ .nav-item{
+
+					&:before{
+						margin-left: 14px;
+						margin-right: 14px;
+					}
+				}
+			}
+		}
+	}
+
+	.arrowTag01{
+		right: -90px;
+		top: -71px;
+	}
+
+	.artgArrow1{
+		width: 40px;
+		right: 20px;
+		margin-top: 12px;
+	}
+
+	.featuresList{
+
+		> li{
+			width: 50%;
+		}
+	}
+
+	.pColumnFoot{
+		font-size: 14px;
+
+		ul{
+			margin-left: -20px;
+			margin-right: -20px;
+		}
+
+		li{
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
+
+	.icnPlay{
+		margin-top: -27px;
+		@include size(100px);
+	}
+
+	.grabBlock{
+		min-height: 633px;
+	}
+
+	.ftSocialNetworks{
+		margin-left: -18px;
+		margin-right: -18px;
+
+		li{
+			padding-left: 18px;
+			padding-right: 18px;
+		}
+	}
+}

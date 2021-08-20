@@ -1,0 +1,224 @@
+/* site responsive styles */
+/* query sm (576) styles */
+@media (min-width: 576px) {
+	.featuresList > li {
+		width: 50%;
+	}
+	.countListItems > li {
+		width: 50%;
+	}
+	.sayQuote .imgHolder {
+		width: 104px;
+		height: 102px;
+	}
+	.sayQuote .wrap {
+		padding: 40px 60px 40px 90px;
+	}
+	.sayQuote .icnQuote {
+		font-size: 11px;
+		width: 30px;
+		height: 30px;
+	}
+}
+
+/* query md (768) styles */
+@media (min-width: 768px) {
+	h1,
+	.h1 {
+		font-size: 2.5rem;
+	}
+	.mainNavigation,
+	.mainNavigation.navbar-nav {
+		padding: 0;
+	}
+	.mainNavigation .nav-item.active .nav-link,
+	.mainNavigation.navbar-nav .nav-item.active .nav-link {
+		background-color: transparent;
+	}
+	.mainNavigation .nav-item + .nav-item:before,
+	.mainNavigation.navbar-nav .nav-item + .nav-item:before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		border-radius: 100%;
+		background-color: #fff;
+		margin-left: 7px;
+		margin-right: 7px;
+		width: 4px;
+		height: 4px;
+	}
+	.mainNavigation .nav-link,
+	.mainNavigation.navbar-nav .nav-link {
+		display: inline;
+		padding: 0;
+	}
+	.mainNavigation .nav-link:hover,
+	.mainNavigation.navbar-nav .nav-link:hover {
+		background-color: transparent;
+	}
+	.navbar-expand-md .mainNavigation .nav-link {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.pageMainNavCollapse {
+		background-color: transparent;
+		position: static;
+		-webkit-transform: none;
+		-ms-transform: none;
+		transform: none;
+		margin-top: 0;
+	}
+	.ourCategoryList li {
+		width: 25%;
+	}
+	.arrowTag {
+		position: absolute;
+	}
+	.arrowTag01 {
+		right: -40px;
+		top: -63px;
+		width: 170px;
+	}
+	.featuresList > li {
+		width: 100%;
+	}
+	.aboutUsBlock .imgHolder {
+		max-width: none;
+	}
+	.postColumn {
+		max-width: none;
+	}
+	.pColumnFoot {
+		font-size: 12px;
+	}
+	.pColumnFoot ul {
+		margin-left: -5px;
+		margin-right: -5px;
+	}
+	.pColumnFoot li {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.vidWrap {
+		max-width: 500px;
+	}
+	.teamColumn {
+		max-width: none;
+	}
+	.ftLogo {
+		-webkit-transform: none;
+		-ms-transform: none;
+		transform: none;
+		position: static;
+	}
+}
+
+/* query lg (992) styles */
+@media (min-width: 992px) {
+	h1,
+	.h1 {
+		font-size: 2.8125rem;
+	}
+	h3,
+	.h3 {
+		font-size: 1.375rem;
+	}
+	.mainNavigation .nav-item + .nav-item:before,
+	.mainNavigation.navbar-nav .nav-item + .nav-item:before {
+		margin-left: 14px;
+		margin-right: 14px;
+	}
+	.arrowTag01 {
+		right: -90px;
+		top: -71px;
+	}
+	.artgArrow1 {
+		width: 40px;
+		right: 20px;
+		margin-top: 12px;
+	}
+	.featuresList > li {
+		width: 50%;
+	}
+	.pColumnFoot {
+		font-size: 14px;
+	}
+	.pColumnFoot ul {
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+	.pColumnFoot li {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.icnPlay {
+		margin-top: -27px;
+		width: 100px;
+		height: 100px;
+	}
+	.grabBlock {
+		min-height: 633px;
+	}
+	.ftSocialNetworks {
+		margin-left: -18px;
+		margin-right: -18px;
+	}
+	.ftSocialNetworks li {
+		padding-left: 18px;
+		padding-right: 18px;
+	}
+}
+
+/* query lgwd (1025) styles */
+/* query xl (1230) styles */
+@media (min-width: 1230px) {
+	h1,
+	.h1 {
+		font-size: 3.125rem;
+	}
+	h2,
+	.h2 {
+		font-size: 2.1875rem;
+	}
+	.arrowTag01 {
+		right: -160px;
+	}
+	.artgArrow1 {
+		left: 40px;
+		right: auto;
+	}
+	.aboutUsBlock .imgHolder .elemsWrap {
+		width: 100%;
+	}
+	.rouder1 {
+		top: -316px;
+	}
+	.grabBlock {
+		min-height: 733px;
+	}
+}
+
+/* query xlwd (1440) styles */
+/* query xxl (1920) styles */
+@media (min-width: 1920px) {
+	.rouder1 {
+		top: -216px;
+	}
+	.rouder2 {
+		bottom: -91px;
+	}
+}
+
+/* query others (down & between) styles */
+@media (max-width: 767.98px) {
+	.pageMainNavCollapse {
+		height: auto !important;
+		overflow-y: auto !important;
+		overflow-x: hidden !important;
+		display: block !important;
+		-webkit-transition: height .3s ease, -webkit-transform .3s ease !important;
+		transition: height .3s ease, -webkit-transform .3s ease !important;
+		transition: height .3s ease, transform .3s ease !important;
+		transition: height .3s ease, transform .3s ease, -webkit-transform .3s ease !important;
+	}
+}

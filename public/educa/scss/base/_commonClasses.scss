@@ -1,0 +1,174 @@
+/*------------------------------------------------------------------
+Common Class Background Cover / .bgCover
+-------------------------------------------------------------------*/
+.bgCover{
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+/*------------------------------------------------------------------
+Common Class Transition / .transition
+-------------------------------------------------------------------*/
+.transition{
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
+}
+
+/*------------------------------------------------------------------
+Common Class Transition Color / .transitClr
+-------------------------------------------------------------------*/
+.transitClr{
+	transition-property: color;
+}
+
+/*------------------------------------------------------------------
+Common Class Transition Color, Background / .transitClrBg
+-------------------------------------------------------------------*/
+.transitClrBg{
+	transition-property: color, background;
+}
+
+/*------------------------------------------------------------------
+Common Class Transition Background / .transitBg
+-------------------------------------------------------------------*/
+.transitBg{
+	transition-property: background;
+}
+
+/*------------------------------------------------------------------
+Common Class Transition Color, Background, border / .transitClrBgBdr
+-------------------------------------------------------------------*/
+.transitClrBgBdr{
+	transition-property: color, background, border;
+}
+
+/*------------------------------------------------------------------
+Common Class Transition border / .transitBdr
+-------------------------------------------------------------------*/
+.transitBdr{
+	transition-property: border;
+}
+
+/*------------------------------------------------------------------
+Common Class Transition Opacity, Visibility / .transitOpVis
+-------------------------------------------------------------------*/
+.transitOpVis{
+	transition-property: opacity, visibility;
+}
+
+/*------------------------------------------------------------------
+Common Class Vertical Align Wrap / .alignHolder
+-------------------------------------------------------------------*/
+.alignHolder{
+	min-height: inherit;
+}
+
+/*------------------------------------------------------------------
+Common Class Font Base / .fontBase
+-------------------------------------------------------------------*/
+.fontBase{
+	font-family: $font-family-base;
+}
+
+/*------------------------------------------------------------------
+Common Class Font Jost / .fontAlter
+-------------------------------------------------------------------*/
+.fontAlter{
+	font-family: $font-alter;
+}
+
+/*------------------------------------------------------------------
+Common Class Font Segoe Print / .fontThird
+-------------------------------------------------------------------*/
+.fontThird{
+	font-family: $font-third;
+}
+
+/*------------------------------------------------------------------
+Common Class Font Poppins / .fontFourth
+-------------------------------------------------------------------*/
+.fontFourth{
+	font-family: $font-fourth;
+}
+
+/*------------------------------------------------------------------
+Common Class Pointer Events None / .inaccessible
+-------------------------------------------------------------------*/
+.inaccessible{
+	pointer-events: none;
+}
+
+/*------------------------------------------------------------------
+Common Class Font Weight SemiBold / .fwSemi
+-------------------------------------------------------------------*/
+.fwSemi{
+	font-weight: 600;
+}
+
+/*------------------------------------------------------------------
+Common Class Button Text Span / .btnText
+-------------------------------------------------------------------*/
+.btnText{
+	padding: $btn-padding-y $btn-padding-x;
+	border: 1px solid transparent;
+	opacity: 1;
+	transform-origin: right center 0;
+	transform: translateY(0px) rotateX(0deg);
+	transform-style: preserve-3d;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	width: 100%;
+}
+
+/*------------------------------------------------------------------
+Common Class Button / .btn
+-------------------------------------------------------------------*/
+.btn{
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:before{
+		content: attr(data-hover);
+		transform: translateY(50%) rotateX(90deg);
+		opacity: 0;
+		border-width: 1px;
+		border-style: solid;
+		transform-origin: right center 0;
+		transform-style: preserve-3d;
+		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+		padding: $btn-padding-y $btn-padding-x;
+	}
+
+	&:hover{
+
+		&:before{
+			transform: translateY(0px) rotateX(0deg);
+			opacity: 1;
+		}
+
+		.btnText{
+			opacity: 0;
+			transform: translateY(-50%) rotateX(90deg);
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Common Class Theme Button / .btnTheme
+-------------------------------------------------------------------*/
+.btnTheme{
+
+	&.btnNoOver{
+		color: $white;
+
+		&:hover{
+			background-color: $white;
+		}
+	}
+
+	&:before{
+		background-color: $white;
+	}
+
+	.btnText{
+		color: $white;
+	}
+}

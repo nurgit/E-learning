@@ -1,0 +1,618 @@
+html{
+	background-color: $light;
+}
+
+body{
+	-ms-overlfow-style: scrollbar;
+	min-width: 320px;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+
+	a{
+		@extend .transition;
+		@extend .transitClr;
+		color: inherit;
+	}
+}
+
+/*------------------------------------------------------------------
+Page Wrapper / #pageWrapper
+-------------------------------------------------------------------*/
+#pageWrapper{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+/*------------------------------------------------------------------
+Page Header / #pageHeader
+-------------------------------------------------------------------*/
+#pageHeader{
+	@extend .transition;
+	@extend .transitBg;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	width: 100%;
+
+	&.fixedPosition{
+		background-color: $dark;
+		box-shadow: $box-shadow-sm;
+	}
+}
+
+.btn{
+	min-width: 250px;
+}
+
+/*------------------------------------------------------------------
+Main Logo / .logo
+-------------------------------------------------------------------*/
+.logo{
+	max-width: 157px;
+}
+
+/*------------------------------------------------------------------
+Main Navigation / .mainNavigation
+-------------------------------------------------------------------*/
+.mainNavigation{
+
+	&,
+	&.navbar-nav{
+		padding: 5px;
+
+		.nav-item{
+
+			&.active{
+
+				.nav-link{
+					background-color: $white;
+				}
+			}
+		}
+
+		.nav-link{
+			@extend .transition;
+			@extend .transitClrBg;
+			font-weight: 600;
+			padding-left: 15px;
+			padding-right: 15px;
+
+			&:hover{
+				background-color: $white;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Page Nav Opener / .pageNavOpener
+-------------------------------------------------------------------*/
+.pageNavOpener{
+	transition: $transition-base;
+	@include pseudo(before, 10px, 10px, null, 10px);
+	@include pseudo(after, null, 10px, 10px, 10px);
+
+	&:before,
+	&:after{
+		@extend .transition;
+		@extend .transitOpVis;
+		height: 2px;
+		background-color: currentColor;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&:before{
+		transform: rotate(45deg) translate(3px, 3px);
+	}
+
+	&:after{
+		transform: rotate(-45deg) translate(3px,-3px);
+	}
+
+	&:hover{
+		background-color: rgba($white, 0.1);
+	}
+
+	&:focus{
+		outline: none;
+	}
+
+	&[aria-expanded="true"]{
+		transform: rotate(360deg);
+		border-bottom-color: transparent;
+		border-top-color: transparent;
+
+		&:before,
+		&:after{
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.navbar-toggler-icon{
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	.navbar-toggler-icon{
+		transition: $transition-fade;
+	}
+}
+
+/*------------------------------------------------------------------
+Page Main Nav Collapse / .pageMainNavCollapse
+-------------------------------------------------------------------*/
+.pageMainNavCollapse{
+	position: absolute;
+	left: 0;
+	top: 100%;
+	right: 0;
+	transform: scaleY(0);
+	transform-origin: 50% 0 0;
+	margin-top: 10px;
+	background-color: $dark;
+
+	&.show{
+		transform: scaleY(1);
+	}
+}
+
+/*------------------------------------------------------------------
+Intro Block / .introBlock
+-------------------------------------------------------------------*/
+.introBlock{
+	min-height: 100vh;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:before{
+		background-color: rgba($dark, 0.62);
+	}
+
+	.container{
+		z-index: 1;
+	}
+}
+
+.mxterWrap{
+	max-width: 560px;
+}
+
+/*------------------------------------------------------------------
+Our Categoty List / .ourCategoryList
+-------------------------------------------------------------------*/
+.ourCategoryList{
+	margin-left: -15px;
+	margin-right: -15px;
+
+	li{
+		display: flex;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 50%;
+	}
+}
+
+/*------------------------------------------------------------------
+Category Box Column / .catBoxColumn
+-------------------------------------------------------------------*/
+.catBoxColumn{
+	background-color: rgba($white, 0.2);
+	border: 1px dashed rgba($white, 0.4);
+	min-height: 168px;
+
+	.icnWrap{
+		height: 55px;
+		font-size: 50px;
+	}
+
+	h2, .h2{
+		font-size: 16px;
+		line-height: (24/16);
+
+		a{
+
+			&:hover{
+				color: $gray-300;
+			}
+		}
+	}
+}
+
+.cbcTag{
+	top: 10px;
+	right: 10px;
+	font-size: 11px;
+	line-height: 1;
+	padding: 3px 7px 2px;
+}
+
+.headingTitle{
+	font-size: 18px;
+}
+
+.catsWrap{
+	max-width: 770px
+}
+
+.arrowTag{
+	font-size: 15px;
+	line-height: (24/15);
+	position: relative;
+}
+
+.artgArrow1{
+	top: 100%;
+	width: 27px;
+	right: 10px;
+}
+
+/*------------------------------------------------------------------
+Featues List / .featuresList
+-------------------------------------------------------------------*/
+.featuresList{
+	margin-left: -15px;
+	margin-right: -15px;
+
+	> li{
+		width: 100%;
+		position: relative;
+		padding-left: 35px;
+		padding-right: 15px;
+		margin-bottom: 11px;
+		@include pseudo(before, 6px, null, null, 14px);
+
+		&:before{
+			content: "\f101";
+			font-weight: 900;
+			font-family: "Font Awesome 5 Free";
+			font-style: normal;
+			font-variant: normal;
+			text-rendering: auto;
+			line-height: 1;
+			font-size: 12px;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+About Us Block / .aboutUsBlock
+-------------------------------------------------------------------*/
+.aboutUsBlock{
+
+	.imgHolder{
+		max-width: 290px;
+
+		.wrap{
+			max-height: 500px;
+		}
+
+		.elemsWrap{
+			bottom: 0;
+			top: 26px;
+			left: 10px;
+			width: 92%;
+		}
+	}
+}
+
+.headTitle{
+	font-size: 16px;
+}
+
+/*------------------------------------------------------------------
+Header Has Ptterns / .hasPattern
+-------------------------------------------------------------------*/
+.hasPattern{
+	@include pseudo(after, null, null, 0, 0);
+
+	&:after{
+		background-image: url(images/pattern02.png);
+		@include size(63px, 10px);
+	}
+
+	&.text-center{
+
+		&:after{
+			margin-left: auto;
+			margin-right: auto;
+			right: 0;
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Post Column / .postColumn
+-------------------------------------------------------------------*/
+.postColumn{
+	max-width: 290px;
+
+	h4, .h4{
+		font-size: 16px;
+		color: $gray-600;
+	}
+}
+
+.pColumnTag{
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 1;
+	top: 40px;
+	left: 40px;
+	padding: 19px 8px;
+}
+
+.pColumnFoot{
+	border-top: 1px solid $light;
+	font-size: 14px;
+	line-height: 1;
+
+	ul{
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+
+	li{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	a{
+		color: inherit;
+	}
+}
+
+/*------------------------------------------------------------------
+Video Play Icon / .icnPlay
+-------------------------------------------------------------------*/
+.icnPlay{
+	background-color: $white;
+	font-size: 14px;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	margin-top: -17px;
+	transform: translate(-50%, -50%);
+	@include size(50px);
+	@include pseudo(before, -10px, -10px, -10px, -10px);
+	@include pseudo(after, -20px, -20px, -20px, -20px);
+
+	&:before,
+	&:after{
+		transition: $transition-base;
+		border: 10px solid rgba($light, 0.9);
+		border-radius: inherit;
+	}
+
+	&:after{
+		border-color: rgba($light, 0.5);
+	}
+
+	a:hover &{
+
+		&:before,
+		&:after{
+			border-width: 20px;
+			transform: scale(1.08);
+		}
+	}
+}
+
+/*------------------------------------------------------------------
+Video Wrap / .vidWrap
+-------------------------------------------------------------------*/
+.vidWrap{
+	max-width: 290px;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:before{
+		background-color: rgba($dark, 0.4);
+	}
+}
+
+/*------------------------------------------------------------------
+Counter List Items / .countListItems
+-------------------------------------------------------------------*/
+.countListItems{
+	margin-left: -15px;
+	margin-right: -15px;
+
+	> li{
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-bottom: 30px;
+		width: 100%;
+	}
+}
+
+.countColumn{
+
+	&.type2{
+
+		h2, .h2{
+			color: $info;
+		}
+	}
+
+	h2, .h2{
+		font-size: 40px;
+	}
+
+	h3, .h3{
+		font-size: 20px;
+		color: inherit;
+	}
+}
+
+.arrowTag02{
+	left: 50%;
+	top: 50%;
+	margin-top: 0;
+	width: 140px;
+	color: $white;
+	transform: translate(-50%, -50%);
+	margin-top: 66px;
+}
+
+.artgArrow2{
+	top: -25px;
+	right: -15px;
+}
+
+.bgMap{
+	opacity: 0.1;
+	left: 50%;
+	top: 50%;
+	margin: 16px 0 0 275px;
+	transform: translate(-50%, -50%);
+}
+
+.rouder1{
+	right: 0;
+	top: -356px;
+}
+
+.rouder2{
+	left: 0;
+	bottom: -111px;
+}
+
+/*------------------------------------------------------------------
+Team Column / .teamColumn
+-------------------------------------------------------------------*/
+.teamColumn{
+	max-width: 290px;
+
+	h4, .h4{
+		font-size: 16px;
+		color: inherit;
+	}
+}
+
+/*------------------------------------------------------------------
+Say Quote Column / .sayQuote
+-------------------------------------------------------------------*/
+.sayQuote{
+
+	q{
+		order: 2;
+		font-style: italic;
+	}
+
+	cite{
+		order: 1;
+		font-style: normal;
+		display: block;
+		margin-bottom: 20px;
+	}
+
+	.subtitle{
+		color: inherit;
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.imgHolder{
+		left: 0;
+		top: 42px;
+		border-style: dashed;
+		border-width: 2px;
+		padding: 5px;
+		@include size(74px, 72px);
+	}
+
+	.wrap{
+		padding: 20px 20px 20px 40px;
+	}
+
+	.icnQuote{
+		color: $white;
+		top: 0;
+		right: 2px;
+		font-size: 8px;
+		@include size(20px);
+	}
+}
+
+/*------------------------------------------------------------------
+Grab Block / .grabBlock
+-------------------------------------------------------------------*/
+.grabBlock{
+	min-height: 533px;
+	@include pseudo(before, 0, 0, 0, 0);
+
+	&:before{
+		background-color: rgba($dark, 0.6);
+	}
+
+	.alignHolder{
+		z-index: 1;
+	}
+}
+
+.arrowTag03{
+	max-width: 160px;
+}
+
+.artgArrow3{
+	top: -10px;
+	right: -16px;
+}
+
+/*------------------------------------------------------------------
+Page Footer / #pageFooter
+-------------------------------------------------------------------*/
+#pageFooter{
+
+	h3, .h3{
+		font-size: 20px;
+	}
+
+	a{
+		@extend .transition;
+		@extend .transitClr;
+		color: inherit;
+	}
+}
+
+/*------------------------------------------------------------------
+Page Footer Navigation / .ftNav
+-------------------------------------------------------------------*/
+.ftNav{
+
+	li{
+		margin-bottom: 11px;
+	}
+}
+
+/*------------------------------------------------------------------
+Page Footer Social Links / .ftSocialNetworks
+-------------------------------------------------------------------*/
+.ftSocialNetworks{
+	margin-left: -10px;
+	margin-right: -10px;
+
+	li{
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-bottom: 11px;
+	}
+}
+
+/*------------------------------------------------------------------
+Page Footer Logo / .ftLogo
+-------------------------------------------------------------------*/
+.ftLogo{
+	position: absolute;
+	left: 50%;
+	top: 45px;
+	transform: translateX(-50%);
+}

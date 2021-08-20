@@ -1,0 +1,88 @@
+/*
+	Theme Name: Educa
+	Author: Htmlbeans
+	Author URI: https://themeforest.net/user/htmlbeans
+	Version: 1
+	Description: Educa theme for html
+	License: GNU General Public License v2 or later
+	License URI: http://www.gnu.org/licenses/gpl-2.0.html
+	Text Domain: Educa
+	Tags: one-column, two-columns
+	Theme URI: http://htmlbeans.com/html/educa/home.html
+*/
+
+/*------------------------------------------------------------------
+Slick Slider / .slick-slider
+Fancybox / .lightbox
+Common Class Background Cover / .bgCover
+Common Class Transition / .transition
+Common Class Transition Color / .transitClr
+Common Class Transition Color, Background / .transitClrBg
+Common Class Transition Background / .transitBg
+Common Class Transition Color, Background, border / .transitClrBgBdr
+Common Class Transition border / .transitBdr
+Common Class Transition Opacity, Visibility / .transitOpVis
+Common Class Vertical Align Wrap / .alignHolder
+Common Class Font Base / .fontBase
+Common Class Font Jost / .fontAlter
+Common Class Font Segoe Print / .fontThird
+Common Class Font Poppins / .fontFourth
+Common Class Pointer Events None / .inaccessible
+Common Class Font Weight SemiBold / .fwSemi
+Common Class Button Text Span / .btnText
+Common Class Button / .btn
+Common Class Theme Button / .btnTheme
+Page Header / #pageHeader
+Main Logo / .logo
+Main Navigation / .mainNavigation
+Page Nav Opener / .pageNavOpener
+Page Main Nav Collapse / .pageMainNavCollapse
+Intro Block / .introBlock
+Our Categoty List / .ourCategoryList
+Category Box Column / .catBoxColumn
+Featues List / .featuresList
+About Us Block / .aboutUsBlock
+Header Has Ptterns / .hasPattern
+Post Column / .postColumn
+Video Play Icon / .icnPlay
+Video Wrap / .vidWrap
+Counter List Items / .countListItems
+Team Column / .teamColumn
+Say Quote Column / .sayQuote
+Grab Block / .grabBlock
+Page Footer / #pageFooter
+Page Footer Navigation / .ftNav
+Page Footer Social Links / .ftSocialNetworks
+Page Footer Logo / .ftLogo
+*/
+
+@import "vendor/bootstrap/functions";
+@import "vendor/bootstrap/variables";
+
+@import "customVariables";
+@import "vendor/bootstrap/mixins";
+@import "base/customMixins";
+
+@font-face { @include fontface(SegoePrint, SegoePrint, normal, normal); }
+@import "vendor/flaticon";
+
+@import 'base/wp-reset';
+
+/*------------------------------------------------------------------
+slick-slider
+-------------------------------------------------------------------*/
+@import "vendor/slickSlider";
+
+/*------------------------------------------------------------------
+lightbox
+-------------------------------------------------------------------*/
+@import "vendor/fancyBox";
+
+@import "base/commonClasses";
+@import "all";
+
+/*------------------------------------------------------------------
+Animations
+-------------------------------------------------------------------*/
+@import 'animations';
+@import 'vendor/animate';

@@ -1,0 +1,36 @@
+@include media-breakpoint-up(xl){
+	h1, .h1{
+		font-size: (50/16) + rem;
+	}
+
+	h2, .h2{
+		font-size: (35/16) + rem;
+	}
+
+	.arrowTag01{
+		right: -160px;
+	}
+
+	.artgArrow1{
+		left: 40px;
+		right: auto;
+	}
+
+	.aboutUsBlock{
+
+		.imgHolder{
+
+			.elemsWrap{
+				width: 100%;
+			}
+		}
+	}
+
+	.rouder1{
+		top: -316px;
+	}
+
+	.grabBlock{
+		min-height: 733px;
+	}
+}

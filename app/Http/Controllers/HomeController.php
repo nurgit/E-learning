@@ -18,11 +18,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        View::share('main_menu', 'Inicio');
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     View::share('main_menu', 'Inicio');
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -31,11 +31,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [];
-        $Total_sale = 0;
-        $data['main_menu'] = "Inicio";
+        // $data = [];
+        // $Total_sale = 0;
+        // $data['main_menu'] = "Inicio";
        
-        return view('backend.home.index', $data);
+        // return view('backend.home.index', $data);
+        //return view('');
+        return view('educa.home');
     }
     
 }

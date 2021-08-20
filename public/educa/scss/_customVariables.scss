@@ -1,0 +1,308 @@
+// Color system
+$white:    #fff !default;
+$gray-100: #f5f5f5;
+$gray-200: #e9ecef !default;
+$gray-300: #dbdbdb;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6f8197;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #1c375b;
+$black:    #000 !default;
+
+$grays: ();
+$grays: map-merge(
+	(
+		"100": $gray-100,
+		"200": $gray-200,
+		"300": $gray-300,
+		"400": $gray-400,
+		"500": $gray-500,
+		"600": $gray-600,
+		"700": $gray-700,
+		"800": $gray-800,
+		"900": $gray-900
+	),
+	$grays
+);
+
+$blue:    #35bfe6;
+$indigo:  #6610f2 !default;
+$purple:  #7043f8;
+$pink:    #e83e8c !default;
+$red:     #cd4236;
+$orange:  #ef7213;
+$yellow:  #ffc107 !default;
+$green:   #5dbc2c;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$colors: ();
+$colors: map-merge(
+	(
+		"blue":       $blue,
+		"indigo":     $indigo,
+		"purple":     $purple,
+		"pink":       $pink,
+		"red":        $red,
+		"orange":     $orange,
+		"yellow":     $yellow,
+		"green":      $green,
+		"teal":       $teal,
+		"cyan":       $cyan,
+		"white":      $white,
+		"gray":       $gray-600,
+		"gray-dark":  $gray-800
+	),
+	$colors
+);
+
+$primary:       $red;
+$success:       $green;
+$info:          $blue;
+$warning:       $orange;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-900;
+
+$theme-colors: ();
+$theme-colors: map-merge(
+	(
+	 	"purple":     $purple,
+		"primary":    $primary,
+		"secondary":  $secondary,
+		"success":    $success,
+		"info":       $info,
+		"warning":    $warning,
+		"danger":     $danger,
+		"light":      $light,
+		"dark":       $dark
+	),
+	$theme-colors
+);
+
+$wpThemeColor: $red;
+
+// Options
+$enable-caret:	false;
+$enable-print-styles:	false;
+$enable-validation-icons:	false;
+$enable-deprecation-messages:	false;
+
+// Spacing
+$spacer: 5px;
+$spacers: ();
+$spacers: map-merge(
+	(
+		0: 0,
+		1: $spacer,
+		2: ($spacer * 2),
+		3: ($spacer * 3.2),
+		4: ($spacer * 4),
+		5: ($spacer * 5),
+		6: ($spacer * 6),
+		7: ($spacer * 7),
+		8: ($spacer * 8),
+		9: ($spacer * 9),
+		10: ($spacer * 10),
+		11: ($spacer * 11),
+		12: ($spacer * 12),
+		13: ($spacer * 13),
+		14: ($spacer * 14),
+		15: ($spacer * 15),
+		16: ($spacer * 16),
+		17: ($spacer * 17),
+		18: ($spacer * 18),
+		19: ($spacer * 19),
+		20: ($spacer * 20),
+		21: ($spacer * 21),
+		22: ($spacer * 22),
+		23: ($spacer * 23),
+		24: ($spacer * 24),
+		25: ($spacer * 25),
+		26: ($spacer * 26),
+		27: ($spacer * 27),
+		28: ($spacer * 28),
+		29: ($spacer * 29),
+		30: ($spacer * 30),
+		31: ($spacer * 31),
+		32: ($spacer * 32),
+		33: ($spacer * 33),
+		34: ($spacer * 34),
+		35: ($spacer * 35),
+		36: ($spacer * 36),
+		37: ($spacer * 37),
+		38: ($spacer * 38),
+		39: ($spacer * 39),
+		40: ($spacer * 40),
+		41: ($spacer * 41),
+		42: ($spacer * 42),
+		43: ($spacer * 43),
+		44: ($spacer * 44),
+		45: ($spacer * 45),
+		46: ($spacer * 46),
+		47: ($spacer * 47),
+		48: ($spacer * 48),
+		49: ($spacer * 49),
+		50: ($spacer * 50),
+		51: ($spacer * 51),
+		52: ($spacer * 52),
+		53: ($spacer * 53),
+		54: ($spacer * 54),
+		55: ($spacer * 55),
+		56: ($spacer * 56),
+		57: ($spacer * 57),
+		58: ($spacer * 58),
+		59: ($spacer * 59),
+		60: ($spacer * 60)
+	),
+	$spacers
+);
+
+$sizes: ();
+$sizes: map-merge(
+	(
+		20: 20%,
+		25: 25%,
+		33: 33.333%,
+		50: 50%,
+		66: 66.667%,
+		80: 80%,
+		100: 100%,
+		auto: auto
+	),
+	$sizes
+);
+
+// Grid breakpoints
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	lgwd: 1025px,
+	xl: 1230px,
+	xlwd: 1440px,
+	xxl: 1920px
+);
+
+// Grid containers
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1200px
+);
+
+// Body
+$body-color:                $gray-600;
+
+// Links
+$link-color:	theme-color("info");
+$link-hover-color:	darken($link-color, 15%);
+$link-hover-decoration:	none;
+
+// Components
+$border-color:	$gray-100;
+$border-radius:	3px;
+$border-radius-lg:	5px;
+$border-radius-sm:	1px;
+$component-active-bg:	theme-color("dark");
+$transition-base:	all .3s ease;
+$transition-fade:	opacity .3s ease, visibility 0.3s ease;
+$transition-collapse:	height .3s ease, transform 0.3s ease;
+
+// Typography
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:	"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-alter:	"Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-third:	"SegoePrint", "Brush Script MT", cursive;
+$font-fourth:	"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-base:	$font-family-sans-serif;
+$font-size-base:	1rem;
+$font-weight-lighter:	100;
+$font-weight-bolder:	800;
+$line-height-base:	(24/16);
+$h1-font-size:	(38);
+$h2-font-size:	(30);
+$h3-font-size:	(20);
+$h4-font-size:	(19);
+$h5-font-size:	(16);
+$h6-font-size:	(14);
+$headings-margin-bottom:	$spacer * 3;
+$headings-font-family:	$font-alter;
+$headings-font-weight:	600;
+$headings-color:	$dark;
+$hr-border-color:	$border-color;
+$hr-margin-y:	$spacer * 3;
+
+// Buttons + Forms
+$input-btn-padding-y:	1.0625rem;
+$input-btn-padding-x:	1.25rem;
+$input-btn-font-family:	$font-alter;
+$input-btn-font-size:	(20);
+$input-btn-focus-width: 0;
+$input-btn-focus-color:	rgba($component-active-bg, .25);
+$input-btn-focus-box-shadow:	0 0 0 $input-btn-focus-width $input-btn-focus-color;
+
+// Buttons
+$btn-padding-y:	$input-btn-padding-y;
+$btn-padding-x:	$input-btn-padding-x;
+$btn-font-family:	$input-btn-font-family;
+$btn-font-size:	$input-btn-font-size;
+$btn-font-weight:	600;
+$btn-box-shadow:	0 1px 1px rgba($black, 0);
+$btn-focus-width:	$input-btn-focus-width;
+$btn-focus-box-shadow:	$input-btn-focus-box-shadow;
+$btn-active-box-shadow:	$btn-box-shadow;
+$btn-border-radius:	$border-radius;
+$btn-border-radius-lg:	$border-radius-lg;
+$btn-border-radius-sm:	$border-radius-sm;
+$btn-transition:	color .3s ease, background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+
+// Forms
+$label-margin-bottom:	$spacer;
+$input-padding-y:	$input-btn-padding-y;
+$input-padding-x:	$input-btn-padding-x;
+$input-font-family:	$input-btn-font-family;
+$input-font-size:	$input-btn-font-size;
+$input-color:	$gray-600;
+$input-border-color:	$border-color;
+$input-box-shadow:	$btn-box-shadow;
+$input-border-radius:	$border-radius;
+$input-border-radius-lg:	$border-radius-lg;
+$input-border-radius-sm:	$border-radius-sm;
+$input-focus-border-color:	lighten($component-active-bg, 25%);
+$input-focus-color:	$input-color;
+$input-focus-width:	$input-btn-focus-width;
+$input-focus-box-shadow:	$input-btn-focus-box-shadow;
+$input-placeholder-color:	$gray-300;
+$input-height-border:	$input-border-width * 2;
+$input-height-inner:	add($input-line-height * 1em, $input-padding-y * 2);
+$input-height-inner-half:	add($input-line-height * .5em, $input-padding-y);
+$input-height-inner-quarter:	add($input-line-height * .25em, $input-padding-y / 2);
+
+// Navbar
+$navbar-nav-link-padding-x:	15px;
+$navbar-toggler-padding-y:	0.25rem;
+$navbar-toggler-padding-x:	0.625rem;
+$navbar-toggler-font-size:	15px;
+$navbar-toggler-border-radius:	$btn-border-radius;
+$navbar-dark-color:	$white;
+$navbar-dark-hover-color:	$info;
+$navbar-dark-active-color:	$navbar-dark-hover-color;
+$navbar-dark-toggler-icon-bg:	url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+$navbar-dark-toggler-border-color:	$white;
+
+// Dropdowns
+$dropdown-color:	$body-color;
+$dropdown-border-color:	$border-color;
+$dropdown-border-radius:	$border-radius;
+$dropdown-inner-border-radius:	subtract($dropdown-border-radius, $dropdown-border-width);
+$dropdown-divider-bg:	$dropdown-border-color;
+$dropdown-link-color:	$body-color;
+$dropdown-link-hover-color:	$white;
+$dropdown-link-hover-bg:	$info;
+$dropdown-link-active-color:	$dropdown-link-hover-color;
+$dropdown-link-active-bg:	$dropdown-link-hover-bg;

@@ -1,0 +1,34 @@
+.btnTheme.btnNoOver:hover,
+.btnTheme::before,
+.mainNavigation .nav-item.active .nav-link,
+.mainNavigation.navbar-nav .nav-item.active .nav-link,
+.mainNavigation .nav-link:hover,
+.mainNavigation.navbar-nav .nav-link:hover,
+.featuresList > li::before,
+.headTitle,
+.postColumn h3 a:hover,
+.postColumn .h3 a:hover,
+.pColumnFoot a:hover,
+.countColumn h2,
+.countColumn .h2,
+.teamColumn h3 a:hover,
+.teamColumn .h3 a:hover,
+#pageFooter a:hover,
+.ftNav li.active > a {
+	color: #cd4236;
+}
+
+.btnTheme.btnNoOver,
+.btnTheme .btnText,
+.pColumnTag,
+.sayQuote .icnQuote {
+	background-color: #cd4236;
+}
+
+.btnTheme.btnNoOver,
+.btnTheme.btnNoOver:hover,
+.btnTheme::before,
+.btnTheme .btnText,
+.sayQuote .imgHolder {
+	border-color: #cd4236;
+}
