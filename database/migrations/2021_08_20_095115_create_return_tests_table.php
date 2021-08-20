@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuzsTable extends Migration
+class CreateReturnTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateQuzsTable extends Migration
      */
     public function up()
     {
-        Schema::create('quzs', function (Blueprint $table) {
+        Schema::create('return_tests', function (Blueprint $table) {
             $table->id();
-            $table->string('quz_name')->nullable();
-            $table->string('instruction')->nullable();
-            $table->string('file')->nullable();
-            $table->float('mark', 8, 2)->nullable();
-            $table->date('date');	
-            $table->integer('course_teacher_id');
+            $table->string('return_file');
+            $table->float('get_mark', 8, 2)->nullable();
+            $table->date('submitin_date');	
+            $table->integer('test_id');
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->timestamps();
         });
@@ -33,6 +31,6 @@ class CreateQuzsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quzs');
+        Schema::dropIfExists('return_tests');
     }
 }

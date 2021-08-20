@@ -3,12 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RegistationController;
+//Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminStudentController;
 use App\Http\Controllers\Admin\AdminCoursesController;
 use App\Http\Controllers\Admin\AdminInstructorController;
+//student
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\StudentTeacherController;
+use App\Http\Controllers\Student\StudentAssignmentController;
+use App\Http\Controllers\Student\StudentQUZController;
+use App\Http\Controllers\Student\StudentTestController;
+use App\Http\Controllers\Student\StudentAllResultController;
+use App\Http\Controllers\Student\StudentLectureNotetController;
+//Teacher
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\TeacherCourseController;
+use App\Http\Controllers\Teacher\TeacherStudentController;
+use App\Http\Controllers\Teacher\TeacherAssignmentController;
+use App\Http\Controllers\Teacher\TeacherQUZController;
+use App\Http\Controllers\Teacher\TeacherTestController;
+use App\Http\Controllers\Teacher\TeacherLectureNoteController;
+
 use App\Http\Controllers\Auth\LoginController;
 
 use GuzzleHttp\Middleware;
@@ -61,14 +77,48 @@ Route::group([ 'prefix'=>'admin' ], function(){
     Route::post('/get_teacher_data', [AdminInstructorController::class, 'fetch_teacher_data']);
 
 });
-
+//Student Group
 Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[StudentController::class,'index'])->name('student.dashboard');
-//
+
+    //Teacher
+    Route::get('teacher',[StudentTeacherController::class,'index']);
+
+    //Assignment
+    Route::get('assignment',[StudentAssignmentController::class,'index']);
+
+    //Quz
+    Route::get('quz',[StudentQUZController::class,'index']);
+
+    //test
+     Route::get('test',[StudentTestController::class,'index']);
+
+    //All Resul 
+
+    Route::get('allResult',[StudentAllResultController::class,'index']);
+
+    // Recture Note
+    Route::get('lectureNote',[StudentLectureNotetController::class,'index']);
+
 });
-//
+
+//Teacher Group
 Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[TeacherController::class,'index'])->name('teacher.dashboard');
+    //course
+    Route::get('course',[TeacherCourseController::class,'index']);
+    //Student
+    Route::get('student',[TeacherStudentController::class,'index']);
+    
+    //Assingment
+    Route::get('assignment',[TeacherAssignmentController::class,'index']);
+    //QUZ
+    Route::get('quz',[TeacherQUZController::class,'index']);
+    //Test
+    Route::get('test',[TeacherTestController::class,'index']);
+
+    //Lecture Note 
+    Route::get('lectureNote',[TeacherLectureNoteController::class,'index']);
 
 });
 
