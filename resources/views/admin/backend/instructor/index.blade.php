@@ -16,7 +16,7 @@
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
             <div class="form-group">
-                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Student</button>
+                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Instructor</button>
             </div>
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
@@ -210,7 +210,7 @@
         function show_edit_modal(idTeacher, teacher_name, email) {
             $('#idTeacher').val(idTeacher);
             $('#teacher_name').val(teacher_name);
-            $('#email').val(email); 
+            $('#email').val(email);
             $('#edit_teacher_modal').modal('show');
         }
         function show_delete_modal(idTeacher, nombre) {
