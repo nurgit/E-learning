@@ -14,7 +14,8 @@ class AdminInstructorController extends Controller
     {
         $data = [];
         $data['main_menu'] = "instructor";
-        $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
+
+        $data['LoggedUserInfo'] = User::where('id','=',session('LoggedUser'))-> first();
         return view('admin.backend.instructor.index', $data);
     }
 
@@ -35,7 +36,7 @@ class AdminInstructorController extends Controller
 
         $student = new Teacher();
 //dd($request->all());
-        
+
         $student->teacher_name= $request->add_teacher_name;
         $student->email= $request->add_email;
 
@@ -45,7 +46,7 @@ class AdminInstructorController extends Controller
         $user->email = $request->add_email;
         $user->role_id= 3;
         $user->password = Hash::make($pass);
-    
+
 
         if ($student->save() && $user->save()) {
             return redirect()->back()->with('success', 'Instructor Added Successfully  ');
@@ -71,7 +72,7 @@ class AdminInstructorController extends Controller
         abort_if(!$teacher, 404);
         $teacher->teacher_name= $request->teacher_name;
         $teacher->email= $request->email;
-    
+
 
         if ($teacher->save()) {
             return redirect()->back()->with('success', 'Teacher Modified Successfully  ');
@@ -103,7 +104,7 @@ class AdminInstructorController extends Controller
         }
     }
 
-    
+
     public function fetch_teacher_data(Request $request)
     {
 

@@ -16,13 +16,13 @@
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
             <div class="form-group">
-                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Student</button>
+                <button type="button" onclick="jQuery('#add_course_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Course</button>
             </div>
-            <table class="table table-bordered datatable" id="student_table">
+            <table class="table table-bordered datatable" id="course_table">
                 <thead>
                 <tr class="replace-inputs">
                     <th>Course Name</th>
-                    <th>Course Class</th>
+                    <th>Course Instructor</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -30,13 +30,13 @@
 
                 </tbody>
             </table>
-            <div id="add_student_modal" class="modal fade"
+            <div id="add_course_modal" class="modal fade"
                  role="dialog" tabindex="-1">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
                     <form action="{{url('admin/course_store')}}" class="form-horizontal form-groups-bordered validate"
-                          method="post" role="form" id="add_student_form">
+                          method="post" role="form" id="add_course_form">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
@@ -55,11 +55,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Courses Class</label>
-
+                                    <label for="" class="col-sm-3 control-label">Course Instructor <span style="color: red">*</span> </label>
                                     <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="add_course_class" name="add_course_class" rows="2"
-                                                  placeholder=""></textarea>
+                                        <select name="instructor_id" id="instructor_id" data-validate="required">
+                                            <option value=""></option>
+                                            @if((isset($instructor)))
+                                                @foreach($instructor as $irow)
+                                                    <option value="{{ $irow->id }}">{{ $irow->teacher_name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div>
                                 </div>
 
@@ -100,11 +105,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Course Class</label>
-
+                                    <label for="" class="col-sm-3 control-label">Course Teacher <span style="color: red">*</span> </label>
                                     <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="course_class" name="course_class" rows="2"
-                                                  placeholder=""></textarea>
+                                        <select name="course_instructor_id" id="course_instructor_id" data-validate="required">
+                                            <option value=""></option>
+                                            @if((isset($instructor)))
+                                                @foreach($instructor as $row)
+                                                    <option value="{{ $row->id }}">{{ $row->teacher_name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div>
                                 </div>
 
@@ -127,7 +137,7 @@
 
                     <!-- Modal content-->
                     <form action="{{url('admin/course_delete')}}" class="form-horizontal form-groups-bordered validate"
-                          method="post" role="form" id="delete_student_form">
+                          method="post" role="form" id="delete_course_form">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
@@ -135,7 +145,7 @@
                             </div>
                             <div class="modal-body">
                                 <div style="text-align: center">
-                                    <span id="delete_student"></span>  Course Will be Deleted. Are You Sure !! ?
+                                    <span id="delete_course"></span>  Course Will be Deleted. Are You Sure !! ?
                                 </div>
                                 <input type="hidden" id="delete_course_id" name="delete_course_id">
                             </div>
@@ -158,11 +168,12 @@
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             initialise_table();
+            initialize_instructor_dropdown();
         });
         function initialise_table() {
-            var student_table = jQuery("#student_table");
+            var course_table = jQuery("#course_table");
 
-            student_table.DataTable({
+            course_table.DataTable({
                 order: [ [0, 'desc'] ],
                 "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "bStateSave": false,
@@ -202,21 +213,38 @@
             });
 
             // Initalize Select Dropdown after DataTables is created
-            student_table.closest('.dataTables_wrapper').find('select').select2({
+            course_table.closest('.dataTables_wrapper').find('select').select2({
                 minimumResultsForSearch: -1
             });
         }
-        function show_edit_modal(idCourse, course_name, course_class) {
+        function show_edit_modal(idCourse, course_name, course_instructor_id) {
             $('#idCourse').val(idCourse);
             $('#course_name').val(course_name);
-            $('#course_class').val(course_class); 
+            $('#course_instructor_id').select2("val", course_instructor_id, true);
             $('#edit_course_modal').modal('show');
         }
         function show_delete_modal(idCourse, nombre) {
-            var x = document.getElementById('delete_student');
+            var x = document.getElementById('delete_course');
             x.innerHTML = nombre;
             $('#delete_course_id').val(idCourse);
             $('#delete_course_modal').modal('show');
+        }
+        function initialize_instructor_dropdown(){
+            $('#module_id, #parent_menu').select2({
+                placeholder: 'Select...',
+                allowClear: true,
+                dropdownParent: $('#add_menu')
+            });
+            $('#course_instructor_id').select2({
+                placeholder: 'Select...',
+                allowClear: true,
+                dropdownParent: $('#edit_course_modal')
+            });
+            $('#instructor_id').select2({
+                placeholder: 'Select...',
+                allowClear: true,
+                dropdownParent: $('#add_course_modal')
+            });
         }
 
     </script>
