@@ -64,7 +64,7 @@ Route::group([ 'prefix'=>'admin' ], function(){
 
 Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[StudentController::class,'index'])->name('student.dashboard');
-
+//
 });
 //
 Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
