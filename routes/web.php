@@ -134,6 +134,8 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
 
     //Fatch
     Route::post('/get_courses_data', [TeacherCourseController::class, 'fetch_courses_data']);
+    Route::post('/get_students_data', [TeacherStudentController::class, 'fetch_students_data']);
+    
     
 });
 
