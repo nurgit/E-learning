@@ -7,7 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 Use App\Models\Assignment;
-
+use App\Models\Teacher;
+use Illuminate\Support\Facades\Hash;
 class TeacherAssignmentController extends Controller
 {
     public function index(){
@@ -17,7 +18,7 @@ class TeacherAssignmentController extends Controller
         ->join('course_teachers', 'courses.id', 'course_teachers.course_id')
         ->join('teachers','course_teachers.teacher_id','teachers.id')
         ->where('teachers.email', $data_user->email )
-        ->select('courses.id','courses.course_name')
+        ->select('courses.course_name' ,'course_teachers.id')
         ->get();
 
         $data = [];
@@ -27,35 +28,51 @@ class TeacherAssignmentController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function update(Request $request)
     {
-
         $request->validate([
-            'add_teacher_name' => 'required',
-            'add_email' => 'required'
+            'assignment_name' => 'required',
+            //'course_id' => 'required',
+            'instruction' => 'required',
+            'mark' => 'required',
+            'date' => 'required',
+            'file' => 'required',
+          
         ]);
+     
 
-        $student = new Teacher();
-//dd($request->all());
+        $assignment =Assignment::where('id',$request->idAssignment)->get()->first();;
+        if ($request->hasfile('file')) {
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('backend/assets/upload/assignment', $filename);
+            $assignment->file ="backend/assets/upload/assignment/$filename";
 
-        $student->teacher_name= $request->add_teacher_name;
-        $student->email= $request->add_email;
+        } else {
+//                return $request;
+            $assignment->file = '';
+        }
+             $assignment->assignment_name = $request->assignment_name;
+            // $assignment->course_teacher_id = $request->course_id;
+             $assignment->instruction = $request->instruction;
 
-        $user = new User();
-        $pass = "welcome123";
-        $user->name = $request->add_teacher_name;
-        $user->email = $request->add_email;
-        $user->role_id= 3;
-        $user->password = Hash::make($pass);
+             $assignment->mark = $request->mark;
+             $assignment->date = $request->date;
+      //  $return_assignment->assignment_id = $request->idAssignment;
+
+        //$return_assignment->submitin_date = date('Y-m-d H:i:s');
 
 
-        if ($student->save() && $user->save()) {
-            return redirect()->back()->with('success', 'Instructor Added Successfully  ');
+        
+
+
+        if ($assignment->save()) {
+            return redirect()->back()->with('success', 'Assignment update  Successfully  ');
         } else {
             return redirect()->back()->with('error', 'An error occurred! Please try again.');
         }
     }
-
 
 
     public function upload(Request $request)
@@ -75,18 +92,17 @@ class TeacherAssignmentController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
             $file->move('backend/assets/upload/assignment', $filename);
-            $assignment->return_file ="backend/assets/upload/assignment/$filename";
+            $assignment->file ="backend/assets/upload/assignment/$filename";
 
         } else {
 //                return $request;
-            $assignment->return_file = '';
+            $assignment->file = '';
         }
              $assignment->assignment_name = $request->add_assignment_name;
              $assignment->course_teacher_id = $request->course_id;
              $assignment->instruction = $request->add_instruction;
 
              $assignment->mark = $request->add_mark;
-             $assignment->date = $request->add_date;
              $assignment->date = $request->add_date;
       //  $return_assignment->assignment_id = $request->idAssignment;
 

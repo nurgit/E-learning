@@ -136,7 +136,7 @@
                            <div class="form-group">
                                <label for="" class="col-sm-3 control-label">Upload File<span style="color: red">*</span> </label>
                                <div class="col-sm-7">
-                                   <input type="file" name="add_file" id="add_file"
+                                   <input type="file" name="file" id="file"
                                        class="form-control"
                                        data-validate="required"
                                        placeholder=""
@@ -165,7 +165,7 @@
            <div class="modal-dialog">
 
                <!-- Modal content-->
-               <form action="{{url('student/assignment_update')}}" class="form-horizontal form-groups-bordered validate"
+               <form action="{{url('teacher/assignment_update')}}" class="form-horizontal form-groups-bordered validate"
                      method="post" role="form" id="edit_generic_name_form" enctype="multipart/form-data">
                    @csrf
                    <div class="modal-content">
@@ -213,7 +213,7 @@
                             <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Assignment submition date <span style="color: red">*</span> </label>
                                 <div class="col-sm-7">
-                                    <input type="text" name="date" id="date"
+                                    <input type="date" name="date" id="date"
                                            class="form-control"
                                            data-validate="required"
                                            placeholder=""
