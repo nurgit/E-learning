@@ -131,6 +131,7 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     Route::get('assignment',[TeacherAssignmentController::class,'index']);
     Route::post('assignment_uoload',[TeacherAssignmentController::class,'upload']);
     Route::post('assignment_update',[TeacherAssignmentController::class,'update']);
+    Route::post('assignment_delete',[TeacherAssignmentController::class,'delete']);
     
     //QUZ
     Route::get('quz',[TeacherQUZController::class,'index']);
