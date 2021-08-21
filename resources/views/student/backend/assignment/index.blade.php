@@ -152,7 +152,7 @@
 
 
                     <!-- Modal content-->
-                    <form action="{{url('student/assignment_upload')}}" class="form-horizontal form-groups-bordered validate"
+                    <form action="{{url('student/assignment_download')}}" class="form-horizontal form-groups-bordered validate"
                           method="post" role="form" id="delete_student_form">
                         @csrf
                         <div class="modal-content">

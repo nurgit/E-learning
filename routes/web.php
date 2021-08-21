@@ -86,6 +86,7 @@ Route::group([ 'prefix'=>'admin' ], function(){
     Route::post('/get_teacher_data', [AdminInstructorController::class, 'fetch_teacher_data']);
 
 });
+Route::get('{file}', [StudentAssignmentController::class, 'download'])->name('download');
 //Student Group
 Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[StudentController::class,'index'])->name('student.dashboard');
@@ -96,7 +97,8 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     //Assignment
     Route::get('assignment',[StudentAssignmentController::class,'index']);
     Route::post('assignment_upload',[StudentAssignmentController::class,'upload']);
-    Route::post('assignment_download',[StudentAssignmentController::class,'download']);
+//    Route::post('assignment_download',[StudentAssignmentController::class,'download']);
+
     //Quz
     Route::get('quz',[StudentQUZController::class,'index']);
 
@@ -131,7 +133,7 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     Route::get('assignment',[TeacherAssignmentController::class,'index']);
     Route::post('assignment_uoload',[TeacherAssignmentController::class,'upload']);
     Route::post('assignment_update',[TeacherAssignmentController::class,'update']);
-    
+
     //QUZ
     Route::get('quz',[TeacherQUZController::class,'index']);
     //Test

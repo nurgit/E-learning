@@ -9,6 +9,7 @@ use App\Models\Teacher;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Return_assignment;
+use Illuminate\Support\Facades\Storage;
 
 class StudentAssignmentController extends Controller
 {
@@ -99,11 +100,14 @@ class StudentAssignmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return RedirectResponse
      */
-    public function download(Request $request)
+    public function download(string $name)
     {
-        $myFile = storage_path("folder/dummy_pdf.pdf");
-        
-        return response()->download($myFile);
+        $path = "backend/assets/upload/assignment/$name/.pdf";
+        $content = file_get_contents($path);
+        return response($content)->withHeaders([
+            'Content-Type' => mime_content_type($path)
+        ]);
+       return redirect()->back();
     }
 
 
@@ -135,11 +139,10 @@ class StudentAssignmentController extends Controller
                 $mark = $row->mark;
                 $date = $row->date;
                 $course_name = $row->course_name;
-
+                $download_url = route('download', ['file'=>$file]);
+                $download_btn = "<a href=\"$download_url\" target=\"_blank\"><span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-download\"></span></a>";
                 $edit_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='upload_assignment_modal(\"$id\", \"$assignment_name\")' data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-edit\"></span></a>";
-                $delete_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='show_delete_modal(\"$id\", \"$assignment_name\")' data-placement=\"top\" title=\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>";
-
-
+                
                // $action = "$edit_btn $delete_btn ";
                 $temp = array();
                 array_push($temp, $id);
@@ -149,7 +152,7 @@ class StudentAssignmentController extends Controller
                 array_push($temp, $mark);
                 array_push($temp, $date);
                 array_push($temp, $edit_btn);
-                array_push($temp, $delete_btn);
+                array_push($temp, $download_btn);
                 array_push($data, $temp);
             }
 
