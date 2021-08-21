@@ -90,7 +90,8 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
 
     //Assignment
     Route::get('assignment',[StudentAssignmentController::class,'index']);
-
+    Route::post('assignment_uoload',[StudentAssignmentController::class,'upload']);
+   
     //Quz
     Route::get('quz',[StudentQUZController::class,'index']);
 
@@ -106,6 +107,9 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
 
     //Fatch
     Route::post('/get_teacher_data', [StudentTeacherController::class, 'fetch_teacher_data']);
+    Route::post('/get_assignment_data', [StudentAssignmentController::class, 'fetch_assignment_data']);
+    Route::post('/get_quz_data', [StudentQUZController::class, 'fetch_quz_data']);
+    
 
 });
 
@@ -114,6 +118,7 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[TeacherController::class,'index'])->name('teacher.dashboard');
     //course
     Route::get('course',[TeacherCourseController::class,'index']);
+   
     //Student
     Route::get('student',[TeacherStudentController::class,'index']);
     
@@ -127,6 +132,9 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     //Lecture Note 
     Route::get('lectureNote',[TeacherLectureNoteController::class,'index']);
 
+    //Fatch
+    Route::post('/get_courses_data', [TeacherCourseController::class, 'fetch_courses_data']);
+    
 });
 
 //######################################################
