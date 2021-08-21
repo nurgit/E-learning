@@ -84,7 +84,7 @@ class StudentAssignmentController extends Controller
         $return_assignment->submitin_date = date('Y-m-d H:i:s');
 
 
-        
+
 
 
         if ($return_assignment->save()) {
@@ -99,22 +99,11 @@ class StudentAssignmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return RedirectResponse
      */
-    public function delete(Request $request)
+    public function download(Request $request)
     {
-        $id = $request->delete_teacher_id;
-
-        if ($teacher = Teacher::where('id', $id)->first())   {
-
-            $teacher->status= 0;
-
-            if ($teacher->save()) {
-                return redirect()->back()->with('success', 'Teacher Delete Succfully .');
-            } else {
-                return redirect()->back()->with('error', 'Teacher delete failed!');
-            }
-        } else {
-            return redirect()->back()->with('error', 'Teacher not found!');
-        }
+        $myFile = storage_path("folder/dummy_pdf.pdf");
+        
+        return response()->download($myFile);
     }
 
 

@@ -41,7 +41,7 @@
                     <th> Submit</th>
                     <th>Dwnload </th>
 
-                    
+
                 </tr>
                 </thead>
                 <tbody>
@@ -98,7 +98,7 @@
            <div class="modal-dialog">
 
                <!-- Modal content-->
-               <form action="{{url('student/assignment_uoload')}}" class="form-horizontal form-groups-bordered validate"
+               <form action="{{url('student/assignment_upload')}}" class="form-horizontal form-groups-bordered validate"
                      method="post" role="form" id="edit_generic_name_form" enctype="multipart/form-data">
                    @csrf
                    <div class="modal-content">
@@ -152,7 +152,7 @@
 
 
                     <!-- Modal content-->
-                    <form action="{{url('admin/teacher_delete')}}" class="form-horizontal form-groups-bordered validate"
+                    <form action="{{url('student/assignment_upload')}}" class="form-horizontal form-groups-bordered validate"
                           method="post" role="form" id="delete_student_form">
                         @csrf
                         <div class="modal-content">
