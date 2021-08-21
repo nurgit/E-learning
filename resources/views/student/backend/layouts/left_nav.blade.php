@@ -42,7 +42,7 @@
                 <li class="{{ 'clients' == request()->path() ? 'active' : ''}}">
                     <a href="{{url('student/teacher')}}">
                         <i class="entypo-users"></i>
-                        <span class="title">Instructor </span>
+                        <span class="title">Courses </span>
                     </a>
 
                 </li>

@@ -25,16 +25,16 @@
     @include('backend.error.error_msg')
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Student</button>
-            </div>
+            </div> --}}
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
                 <tr class="replace-inputs">
-                    <th>Instructor Name</th>
-                    <th>Email</th>
-                    <th>Courses</th>
-                    <th>Action</th>
+                    <th>Course Name</th>
+                    <th> Istructor Name</th>
+                    <th>Instructor Email</th>
+                    {{-- <th>Action</th> --}}
                 </tr>
                 </thead>
                 <tbody>
