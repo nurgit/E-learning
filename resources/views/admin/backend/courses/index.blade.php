@@ -230,11 +230,7 @@
             $('#delete_course_modal').modal('show');
         }
         function initialize_instructor_dropdown(){
-            $('#module_id, #parent_menu').select2({
-                placeholder: 'Select...',
-                allowClear: true,
-                dropdownParent: $('#add_menu')
-            });
+
             $('#course_instructor_id').select2({
                 placeholder: 'Select...',
                 allowClear: true,

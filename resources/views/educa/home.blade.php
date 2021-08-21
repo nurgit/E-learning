@@ -36,7 +36,7 @@
 						<!-- logo -->
 						<div class="logo flex-shrink-0 mr-3">
 							<a href="{{url('/')}}">
-								<img src="{{asset('educa/images/logo.png')}}" class="img-fluid" alt="E-Learning | Online Learning">
+								<img src="{{asset('educa/images/logo.svg')}}" class="img-fluid" alt="E-Learning | Online Learning">
 							</a>
 						</div>
 						<!-- pageMainNavCollapse -->
