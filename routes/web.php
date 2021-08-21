@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminStudentController;
 use App\Http\Controllers\Admin\AdminCoursesController;
 use App\Http\Controllers\Admin\AdminInstructorController;
+use App\Http\Controllers\Admin\AdminTutorialController;
 //student
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\StudentTeacherController;
@@ -74,10 +75,14 @@ Route::group([ 'prefix'=>'admin' ], function(){
     Route::post('teacher_update',[AdminInstructorController::class,'update']);
     Route::post('teacher_delete',[AdminInstructorController::class,'delete']);
     //Tutorial
-    Route::get('tutorial',[AdminController::class,'index'])->name('admin.tutorial');
+    Route::get('tutorial',[AdminTutorialController::class,'index'])->name('admin.tutorial');
+    Route::post('tutorial_store',[AdminTutorialController::class,'store']);
+    Route::post('tutorial_update',[AdminTutorialController::class,'update']);
+    Route::post('tutorial_delete',[AdminTutorialController::class,'delete']);
     //Fatch
     Route::post('/get_student_data', [AdminStudentController::class, 'fetch_student_data']);
     Route::post('/get_courses_data', [AdminCoursesController::class, 'fetch_courses_data']);
+    Route::post('/get_tutorials_data', [AdminTutorialController::class, 'fetch_tutorials_data']);
     Route::post('/get_teacher_data', [AdminInstructorController::class, 'fetch_teacher_data']);
 
 });
@@ -97,7 +102,7 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     //test
      Route::get('test',[StudentTestController::class,'index']);
 
-    //All Resul 
+    //All Resul
 
     Route::get('allResult',[StudentAllResultController::class,'index']);
 
@@ -116,7 +121,7 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     Route::get('course',[TeacherCourseController::class,'index']);
     //Student
     Route::get('student',[TeacherStudentController::class,'index']);
-    
+
     //Assingment
     Route::get('assignment',[TeacherAssignmentController::class,'index']);
     //QUZ
@@ -124,7 +129,7 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     //Test
     Route::get('test',[TeacherTestController::class,'index']);
 
-    //Lecture Note 
+    //Lecture Note
     Route::get('lectureNote',[TeacherLectureNoteController::class,'index']);
 
 });

@@ -48,7 +48,7 @@ var baseurl = "{{ url('/post_login') }}";
 		<div class="login-content">
 
 			<a href="index.html" class="logo">
-				<img src="backend/assets/images/pos_logo.png" width="120" alt="" />
+				<img src="backend/assets/images/logo.svg" width="120" alt="" />
 			</a>
             <h5> POS v2.0 </h5>
 			<p class="description">Dear user, log in to access the admin area!</p>

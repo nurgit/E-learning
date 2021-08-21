@@ -7,7 +7,7 @@
 				<!-- logo -->
 				<div class="logo">
                     <a href="{{url('teacher/dashboard')}}">
-						<img src="{{ asset('backend/assets/images/pos_logo.png') }}" width="100"  alt="" />
+						<img src="{{ asset('backend/assets/images/logo.svg') }}" width="100"  alt="" />
 					</a>
 				</div>
 
