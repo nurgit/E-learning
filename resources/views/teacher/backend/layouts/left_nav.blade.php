@@ -53,27 +53,47 @@
                     </a>
 
                 </li>
-				<li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
-                    <a href="{{url('teacher/assignment')}}">
+				<li  class="has-sub">
+                    <a href="">
                         <i class="entypo-book"></i>
                         <span class="title">Assignment </span>
                     </a>
-
+                    <ul>
+						<li class="{{ 'sales_report' == request()->path() ? 'active' : ''}}">
+							<a href="{{url('teacher/assignment')}}">
+                                <i class="entypo-credit-card"></i>
+								<span class="title">Upload Assignment</span>
+							</a>
+						</li>
+						<li class="{{ 'cleared_sales_report' == request()->path() ? 'active' : ''}}">
+							<a href="{{url('cleared_sales_report')}}">
+                                <i class="entypo-check"></i>
+							<span class="title">Check Assignment</span>
+                        </a>
+                        </li>
+                    </ul>
                 </li>
-				<li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
-                    <a href="{{url('teacher/quz')}}">
-                        <i class="entypo-book"></i>
-                        <span class="title">QUZ </span>
-                    </a>
 
-                </li>
-                <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
+                         
+
+                    <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
+                        <a href="{{url('teacher/quz')}}">
+                            <i class="entypo-book"></i>
+                            <span class="title">QUZ </span>
+                        </a>
+
+                    </li>
+          
+
+                {{-- <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
                     <a href="{{url('teacher/test')}}">
                         <i class="entypo-book"></i>
                         <span class="title">Test </span>
                     </a>
 
-                </li>
+                </li> --}}
+
+
                 <li class="{{ 'sales_history' == request()->path() ? 'active' : ''}}">
                     <a href="{{url('teacher/lectureNote')}}">
                         <i class="entypo-play"></i>
