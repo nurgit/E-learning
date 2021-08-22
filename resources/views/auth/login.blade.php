@@ -10,7 +10,7 @@
 
 	<link rel="icon" href="backend/assets/images/favicon.ico">
 
-	<title>POS | Login</title>
+	<title>E-Learning | Login</title>
 
 	<link rel="stylesheet" href="backend/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="backend/assets/css/font-icons/entypo/css/entypo.css">
@@ -51,7 +51,7 @@ var baseurl = "{{ url('/post_login') }}";
 				<img src="backend/assets/images/logo.svg" width="120" alt="" />
 			</a>
             <h5> POS v2.0 </h5>
-			<p class="description">Dear user, log in to access the admin area!</p>
+			<p class="description">Dear user,please log in !</p>
 
 			<!-- progress bar indicator -->
 			<div class="login-progressbar-indicator">
