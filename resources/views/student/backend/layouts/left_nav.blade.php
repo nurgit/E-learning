@@ -70,7 +70,7 @@
 				<li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
                     <a href="{{url('student/allResult')}}">
                         <i class="entypo-book"></i>
-                        <span class="title">All Resulr </span>
+                        <span class="title">All Result </span>
                     </a>
 
                 </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Course_teacher;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -119,15 +120,18 @@ class AdminInstructorController extends Controller
                 $id = $row->id;
                 $teacher_name = $row->teacher_name;
                 $email = $row->email;
+                $course = Course_teacher::where('teacher_id', $id )->get();
+                
                 $edit_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='show_edit_modal(\"$id\", \"$teacher_name\",  \"$email\" )' data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-edit\"></span></a>";
                 $delete_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='show_delete_modal(\"$id\", \"$teacher_name\")' data-placement=\"top\" title=\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>";
 
 
                 $action = "$edit_btn $delete_btn ";
                 $temp = array();
+                array_push($temp, $id);
                 array_push($temp, $teacher_name);
                 array_push($temp, $email);
-                array_push($temp, $email);
+        
                 array_push($temp, $action);
                 array_push($data, $temp);
             }
