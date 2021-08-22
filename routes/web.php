@@ -50,6 +50,12 @@ use GuzzleHttp\Middleware;
 //});
 
 //###################################
+
+// download routing 
+Route::get('{file}', [StudentAssignmentController::class, 'download'])->name('download');
+Route::get('{file_assignment}', [TeacherCheckAssignmentController::class, 'download'])->name('check_assignment_download');
+Route::get('{file_note}', [StudentAssignmentController::class, 'download'])->name('note_download');
+
 Route::get('/', [HomeController::class,'index']);
 
 Route::get('/registation',[RegistationController::class, 'registation'])->name('registation');
@@ -88,8 +94,7 @@ Route::group([ 'prefix'=>'admin' ], function(){
     Route::post('/get_teacher_data', [AdminInstructorController::class, 'fetch_teacher_data']);
 
 });
-Route::get('{file}', [StudentAssignmentController::class, 'download'])->name('download');
-Route::get('{file_assignment}', [TeacherCheckAssignmentController::class, 'download'])->name('check_assignment_download');
+
 
 //Student Group
 Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
@@ -120,7 +125,9 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     Route::post('/get_teacher_data', [StudentTeacherController::class, 'fetch_teacher_data']);
     Route::post('/get_assignment_data', [StudentAssignmentController::class, 'fetch_assignment_data']);
     Route::post('/get_quz_data', [StudentQUZController::class, 'fetch_quz_data']);
+    Route::post('/get_notes_data', [StudentLectureNotetController::class,'fetch_notes_data']);
 
+    
 
 });
 
