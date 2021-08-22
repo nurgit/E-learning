@@ -142,7 +142,7 @@ class StudentAssignmentController extends Controller
                 $download_url = route('download', ['file'=>$file]);
                 $download_btn = "<a href=\"$download_url\" target=\"_blank\"><span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-download\"></span></a>";
                 $edit_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='upload_assignment_modal(\"$id\", \"$assignment_name\")' data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-edit\"></span></a>";
-                
+
                // $action = "$edit_btn $delete_btn ";
                 $temp = array();
                 array_push($temp, $id);
