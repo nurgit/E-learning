@@ -36,7 +36,7 @@ class TeacherAssignmentController extends Controller
             'instruction' => 'required',
             'mark' => 'required',
             'date' => 'required',
-            'file' => 'required',
+            //'file' => 'required',
           
         ]);
      
@@ -51,7 +51,7 @@ class TeacherAssignmentController extends Controller
 
         } else {
 //                return $request;
-            $assignment->file = '';
+            $assignment->file =$request->p_file;
         }
              $assignment->assignment_name = $request->assignment_name;
             // $assignment->course_teacher_id = $request->course_id;
@@ -83,7 +83,7 @@ class TeacherAssignmentController extends Controller
             'add_instruction' => 'required',
             'add_mark' => 'required',
             'add_date' => 'required',
-            'add_date' => 'required',
+            'file' => 'required',
         ]);
 
         $assignment = new Assignment();
@@ -96,7 +96,7 @@ class TeacherAssignmentController extends Controller
 
         } else {
 //                return $request;
-            $assignment->file = '';
+            $assignment->file ='';
         }
              $assignment->assignment_name = $request->add_assignment_name;
              $assignment->course_teacher_id = $request->course_id;
@@ -118,27 +118,24 @@ class TeacherAssignmentController extends Controller
             return redirect()->back()->with('error', 'An error occurred! Please try again.');
         }
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return RedirectResponse
-     */
+  
+
+
     public function delete(Request $request)
     {
-        $id = $request->delete_teacher_id;
 
-        if ($teacher = Teacher::where('id', $id)->first())   {
 
-            $teacher->status= 0;
+        if ( $assignment =Assignment::where('id',$request->assignmentId)->get()->first())   {
 
-            if ($teacher->save()) {
-                return redirect()->back()->with('success', 'Teacher Delete Succfully .');
+            $assignment->status= 0;
+
+            if ($assignment->save()) {
+                return redirect()->back()->with('success', 'Assignment Delete Succfully .');
             } else {
-                return redirect()->back()->with('error', 'Teacher delete failed!');
+                return redirect()->back()->with('error', 'Assignment delete failed!');
             }
         } else {
-            return redirect()->back()->with('error', 'Teacher not found!');
+            return redirect()->back()->with('error', 'Assignment not found!');
         }
     }
 
@@ -156,37 +153,40 @@ class TeacherAssignmentController extends Controller
                    // ->join('course_teachers', 'teachers.id', 'course_teachers.teacher_id')
 
                     ->where('teachers.email', $data->email )
-                    ->select('assignments.id','assignments.assignment_name','assignments.instruction','assignments.file','assignments.mark','assignments.date','courses.course_name')
+                    ->select('assignments.id','assignments.assignment_name','assignments.instruction','assignments.file','assignments.mark','assignments.date','courses.course_name','assignments.status')
                     ->get();
                    // dd( $get_assignment);
 
-        if ($get_assignment->count() > 0) {
+        if ($get_assignment->count() >0  ) {
             //dd($get_student);
             $data = [];
             foreach ($get_assignment as $row) {
-                $id = $row->id;
-                $assignment_name = $row->assignment_name;
-                $instruction = $row->instruction;
-                $file = $row->file;
-                $mark = $row->mark;
-                $date = $row->date;
-                $course_name = $row->course_name;
-              
-                $edit_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='update_assignment_modal(\"$id\", \"$assignment_name\", \"$instruction\", \"$mark\", \"$date\")' data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-edit\"></span></a>";
-                $delete_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='show_delete_modal(\"$id\", \"$assignment_name\")' data-placement=\"top\" title=\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>";
+                
+                if($row->status=1){
+                    $id = $row->id;
+                    $assignment_name = $row->assignment_name;
+                    $instruction = $row->instruction;
+                    $file = $row->file;
+                    $mark = $row->mark;
+                    $date = $row->date;
+                    $course_name = $row->course_name;
+                  
+                    $edit_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='update_assignment_modal(\"$id\", \"$assignment_name\", \"$instruction\", \"$mark\", \"$date\",\"$file\")' data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-edit\"></span></a>";
+                    $delete_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='show_delete_modal(\"$id\", \"$assignment_name\")' data-placement=\"top\" title=\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>";
+        
+         
+                   $action = "$edit_btn $delete_btn";
+                    $temp = array();
+                    array_push($temp, $id);
+                    array_push($temp, $assignment_name);
+                    array_push($temp, $course_name);
+                    array_push($temp, $instruction);
+                    array_push($temp, $mark);
+                    array_push($temp, $date);
+                    array_push($temp, $action);
     
-     
-               $action = "$edit_btn $delete_btn";
-                $temp = array();
-                array_push($temp, $id);
-                array_push($temp, $assignment_name);
-                array_push($temp, $course_name);
-                array_push($temp, $instruction);
-                array_push($temp, $mark);
-                array_push($temp, $date);
-                array_push($temp, $action);
-
-                array_push($data, $temp);
+                    array_push($data, $temp);
+                }
             }
 
             echo json_encode(array('data'=>$data));

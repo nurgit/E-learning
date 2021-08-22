@@ -240,6 +240,7 @@
 
 
                            <input type="hidden" id="idAssignment" name="idAssignment">
+                           <input type="hidden" id="p_file" name="p_file">
                        </div>
                        <div class="modal-footer">
                            <button type="submit" class="btn btn-success" id="edit_btn">Update</button>
@@ -251,24 +252,24 @@
                </form>
            </div>
        </div>
-            <div id="delete_teacher_modal" class="modal fade"
+            <div id="delete_assignment_modal" class="modal fade"
                  role="dialog" tabindex="-1">
                 <div class="modal-dialog">
 
 
                     <!-- Modal content-->
-                    <form action="{{url('admin/teacher_delete')}}" class="form-horizontal form-groups-bordered validate"
+                    <form action="{{url('teacher/assignment_delete')}}" class="form-horizontal form-groups-bordered validate"
                           method="post" role="form" id="delete_student_form">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" style="text-align: center; color: #00ffea" >Delete Student</h4>
+                                <h4 class="modal-title" style="text-align: center; color: #00ffea" >Delete Assignment</h4>
                             </div>
                             <div class="modal-body">
                                 <div style="text-align: center">
-                                    <span id="delete_student"></span> -Teacher Will be Deleted. Are You Sure !! ?
+                                    <span id="delete_student"></span> -Assignment Will be Deleted. Are You Sure !! ?
                                 </div>
-                                <input type="hidden" id="delete_teacher_id" name="delete_teacher_id">
+                                <input type="hidden" id="assignmentId" name="assignmentId">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success" id="delete_btn">Delete</button>
@@ -339,13 +340,13 @@
         }
 
   
-        function update_assignment_modal(idAssignment, assignment_name,instruction,mark,date) {
+        function update_assignment_modal(idAssignment, assignment_name,instruction,mark,date,p_file) {
             $('#idAssignment').val(idAssignment);
             $('#assignment_name').val(assignment_name);
             $('#instruction').val(instruction);
             $('#mark').val(mark);
             $('#date').val(date);
-            // $('#file').val(file);
+            $('#p_file').val(p_file);
 
             $('#update_assignment_modal').modal('show');
         }
@@ -353,8 +354,8 @@
         function show_delete_modal(idAssignment, nombre) {
             var x = document.getElementById('delete_student');
             x.innerHTML = nombre;
-            $('#delete_teacher_id').val(idAssignment);
-            $('#delete_teacher_modal').modal('show');
+            $('#assignmentId').val(idAssignment);
+            $('#delete_assignment_modal').modal('show');
         }
 
     </script>
