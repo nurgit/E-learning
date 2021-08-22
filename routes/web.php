@@ -140,11 +140,16 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
 
     //Lecture Note
     Route::get('lectureNote',[TeacherLectureNoteController::class,'index']);
+    Route::post('lectureNote_uoload',[TeacherLectureNoteController::class,'upload']);
+    Route::post('lectureNote_update',[TeacherLectureNoteController::class,'update']);
+    Route::post('lectureNote_delete',[TeacherLectureNoteController::class,'delete']);
 
     //Fatch
     Route::post('/get_courses_data', [TeacherCourseController::class, 'fetch_courses_data']);
     Route::post('/get_students_data', [TeacherStudentController::class, 'fetch_students_data']);
     Route::post('/get_assignments_data', [TeacherAssignmentController::class, 'fetch_assignments_data']);
+    Route::post('/get_lecture_notes_data', [TeacherLectureNoteController ::class, 'fetch_lecture_notes_data']);
+    
     
     
 });
