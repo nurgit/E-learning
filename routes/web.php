@@ -99,6 +99,8 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
 
     //Teacher
     Route::get('teacher',[StudentTeacherController::class,'index']);
+    Route::post('course_store',[StudentTeacherController::class,'store']);
+    
 
     //Assignment
     Route::get('assignment',[StudentAssignmentController::class,'index']);
@@ -123,7 +125,8 @@ Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     Route::post('/get_assignment_data', [StudentAssignmentController::class, 'fetch_assignment_data']);
     Route::post('/get_quz_data', [StudentQUZController::class, 'fetch_quz_data']);
     Route::post('/get_notes_data', [StudentLectureNotetController::class,'fetch_notes_data']);
-
+    Route::post('/get_result_data', [StudentAllResultController::class,'fetch_result_data']);
+    
     
 
 });

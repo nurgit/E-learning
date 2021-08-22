@@ -16,10 +16,43 @@ use Illuminate\Support\Facades\DB;
 class StudentTeacherController extends Controller
 {
     public function index(){
+
+        $data_user=User::where('id','=',session('LoggedUser'))-> first();
+
+        $get_course= DB::table('courses')
+        ->get();
+
         $data = [];
         $data['main_menu'] = "teacher";
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        return view('student.backend.teacher.index', $data);
+        return view('student.backend.teacher.index', compact('get_course'))->with($data);
+    }
+
+    public function store(Request $request)
+    {
+
+        $request->validate([
+            'course_id' => 'required',
+          
+
+        ]);
+//dd($request->course_id);
+        $course_students = new Course_student();
+//dd($request->all());
+        $data=User::where('id','=',session('LoggedUser'))-> first();
+
+
+        $student_id =  Student::where('email',$data->email)->get()->first();
+
+        $course_students->course_id = $request->course_id;
+        $course_students->student_id = $student_id->id;
+
+
+        if ($course_students->save()) {
+            return redirect()->back()->with('success', 'Course Added Successfully  ');
+        } else {
+            return redirect()->back()->with('error', 'An error occurred! Please try again.');
+        }
     }
     
     public function fetch_teacher_data(Request $request)

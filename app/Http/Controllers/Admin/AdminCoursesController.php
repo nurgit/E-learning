@@ -123,6 +123,7 @@ class AdminCoursesController extends Controller
                 $course_name = $row->course_name;
                 $course_instructor_id = Course_teacher::where('course_id', $id)->pluck('teacher_id');
                 $course_instructor = Teacher::where('id',$course_instructor_id )->pluck('teacher_name');
+                
                // dd($get_course_instructor);
 
 

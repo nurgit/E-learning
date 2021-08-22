@@ -41,7 +41,7 @@
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" style="text-align: center">Add Course</h4>
+                                <h4 class="modal-title" style="text-align: center">Add Instructor</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -86,7 +86,7 @@
                    @csrf
                    <div class="modal-content">
                        <div class="modal-header">
-                           <h4 class="modal-title" style="text-align: center">Edit Course</h4>
+                           <h4 class="modal-title" style="text-align: center">Edit Instructor</h4>
                        </div>
                        <div class="modal-body">
                            <div class="form-group">

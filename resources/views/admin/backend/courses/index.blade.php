@@ -141,7 +141,7 @@
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" style="text-align: center; color: #00ffea" >Delete Student</h4>
+                                <h4 class="modal-title" style="text-align: center; color: #00ffea" >Delete Course</h4>
                             </div>
                             <div class="modal-body">
                                 <div style="text-align: center">
@@ -172,7 +172,6 @@
         });
         function initialise_table() {
             var course_table = jQuery("#course_table");
-
             course_table.DataTable({
                 order: [ [0, 'desc'] ],
                 "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
@@ -211,7 +210,6 @@
                     }
                 ]
             });
-
             // Initalize Select Dropdown after DataTables is created
             course_table.closest('.dataTables_wrapper').find('select').select2({
                 minimumResultsForSearch: -1
@@ -230,7 +228,6 @@
             $('#delete_course_modal').modal('show');
         }
         function initialize_instructor_dropdown(){
-
             $('#course_instructor_id').select2({
                 placeholder: 'Select...',
                 allowClear: true,
@@ -242,6 +239,5 @@
                 dropdownParent: $('#add_course_modal')
             });
         }
-
     </script>
 @endsection

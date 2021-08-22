@@ -25,17 +25,18 @@
     @include('backend.error.error_msg')
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
-
+            
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
                 <tr class="replace-inputs">
-                    <th> Id</th>
-                    <th>Note name</th>
+                    <th>Id</th>
+                    <th>Assignment name</th>
                     <th>Courses</th>
-                    <th>Note</th>
-                    <th>Uploted Date</th>
-                    <th>Dowmload</th>
-               
+                    <th>Instruction</th>
+                    <th>deadline</th>
+                    <th>Submited Date</th>
+                    <th> Total Mark</th>
+                    <th>Score </th>
 
 
                     
@@ -45,12 +46,8 @@
 
                 </tbody>
             </table>
-
-           
             
-
-
-              
+           
         </div>
     </div>
 @endsection
@@ -73,7 +70,7 @@
                 dom: 'Bfrtip',
                 "ajax": {
                     "type": 'POST',
-                    "url": '{{url('student/get_notes_data')}}',
+                    "url": '{{url('student/get_result_data')}}',
                     "data" : {
                         "_token": "{{ csrf_token() }}"
                     },
@@ -109,23 +106,8 @@
             });
         }
 
-  
-        function update_LectureNite_modal(idLectureNote, note_name,note,date) {
-            $('#idLectureNote').val(idLectureNote);
-            $('#note_name').val(note_name);
-            $('#note').val(note);
-            $('#date').val(date);
-           // $('#p_file').val(p_file);
 
-            $('#update_LectureNite_modal').modal('show');
-        }
 
-        function show_delete_modal(dlt_idLectureNote, nombre) {
-            var x = document.getElementById('delete_lectureNote');
-            x.innerHTML = nombre;
-            $('#dlt_idLectureNote').val(dlt_idLectureNote);
-            $('#delete_lectureNole_modal').modal('show');
-        }
 
     </script>
 @endsection

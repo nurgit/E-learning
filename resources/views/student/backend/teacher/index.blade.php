@@ -1,5 +1,5 @@
 @extends('student.backend.layouts.master')
-@section('page_header','Instructor')
+@section('page_header','Courses')
 @section('page_links')
     <link rel="stylesheet" href="{{ asset('backend/assets/js/datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/js/select2/select2.css') }}">
@@ -25,9 +25,9 @@
     @include('backend.error.error_msg')
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
-            {{-- <div class="form-group">
-                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Student</button>
-            </div> --}}
+            <div class="form-group">
+                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Course</button>
+            </div>
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
                 <tr class="replace-inputs">
@@ -46,7 +46,7 @@
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
-                    <form action="{{url('admin/teacher_store')}}" class="form-horizontal form-groups-bordered validate"
+                    <form action="{{url('student/course_store')}}" class="form-horizontal form-groups-bordered validate"
                           method="post" role="form" id="add_student_form">
                         @csrf
                         <div class="modal-content">
@@ -55,22 +55,21 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="" class="col-sm-3 control-label">Teacher Name<span style="color: red">*</span> </label>
+                                    <label for="" class="col-sm-3 control-label">Course<span style="color: red">*</span> </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="add_teacher_name" id="add_teacher_name"
+                                        {{-- <input type="text" name="add_teacher_name" id="add_teacher_name"
                                                class="form-control"
                                                data-validate="required"
                                                placeholder=""
-                                        >
+                                        > --}}
+                                        <select  aria-label="Default select example" class="form-control" name="course_id"id="course_id">
+                                            {{-- //<option >Please choose a course</option> --}}
+                                            @foreach ($get_course as $courses)
+                                            <option value="{{$courses->id}}">{{$courses->course_name}}</option>
+                                            @endforeach
+                                          
+                                        </select>
                                         <span id="name_err"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="url" class="col-sm-3 control-label">Email</label>
-
-                                    <div class="col-sm-7">
-                                        <textarea class="form-control autogrow" id="add_email" name="add_email" rows="2"
-                                                  placeholder=""></textarea>
                                     </div>
                                 </div>
 

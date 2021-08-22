@@ -26,7 +26,7 @@
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
             <div class="form-group">
-                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Instructor</button>
+                <button type="button" onclick="jQuery('#add_student_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Assigntment</button>
             </div>
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
@@ -58,7 +58,7 @@
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" style="text-align: center">Add Course</h4>
+                                <h4 class="modal-title" style="text-align: center"> Add Assignment </h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">

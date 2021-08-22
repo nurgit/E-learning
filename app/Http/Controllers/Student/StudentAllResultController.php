@@ -14,64 +14,67 @@ class StudentAllResultController extends Controller
     public function index(){
         $data_user=User::where('id','=',session('LoggedUser'))-> first();
 
-        $get_course= DB::table('courses')
-        ->join('course_teachers', 'courses.id', 'course_teachers.course_id')
-        ->join('teachers','course_teachers.teacher_id','teachers.id')
-        ->where('teachers.email', $data_user->email )
-        ->select('courses.course_name' ,'course_teachers.id')
-        ->get();
+
 
         $data = [];
         $data['main_menu'] = "assignment";
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        return view('student.backend.allResult.index',compact('get_course'))->with($data);
+        return view('student.backend.allResult.index')->with($data);
 
     }
 
 
 
-    public function fetch_notes_data(Request $request)
+ 
+    public function fetch_result_data(Request $request)
     {
 
         // $get_teacher= Teacher::where('status', 1)->get();
         $data=User::where('id','=',session('LoggedUser'))-> first();
 
-        $get_lecture_notes= DB::table('lecture_notes')
-                    ->join('course_teachers', 'lecture_notes.course_teacher_id', 'course_teachers.id')
-                    ->join('courses', 'course_teachers.course_id', 'courses.id')
-                    ->join('course_students','courses.id','course_students.course_id')
+
+    
+    
+        $get_assignment= DB::table('return_assignments')
+                    ->join('assignments','return_assignments.assignment_id','assignments.id')
+                    ->join('course_teachers', 'assignments.course_teacher_id', 'course_teachers.id')
+                    ->join('course_students', 'course_teachers.course_id', 'course_students.course_id')
+                    ->join('courses', 'course_students.course_id', 'courses.id')
                     ->join('students', 'course_students.student_id', 'students.id')
                     ->where('students.email', $data->email )
-                    ->select('lecture_notes.id','lecture_notes.note_name','lecture_notes.note','lecture_notes.file','lecture_notes.date','lecture_notes.course_teacher_id','lecture_notes.status','courses.course_name','lecture_notes.status')
+                    ->select('return_assignments.id','return_assignments.get_mark','return_assignments.submitin_date','return_assignments.return_file','assignments.assignment_name','assignments.instruction','assignments.mark','assignments.date','courses.course_name','return_assignments.status')
                     ->get();
-                  ( $get_lecture_notes);
+                   // dd( $get_assignment);
 
-        if ($get_lecture_notes->count() >0  ) {
-            //dd($get_student);
+        if ($get_assignment->count() >0  ) {
+         
             $data = [];
-            foreach ($get_lecture_notes as $row) {
+            foreach ($get_assignment as $row) {
                 
                 if($row->status==1){
+
                     $id = $row->id;
-                    $note_name = $row->note_name;
-                    $note = $row->note;
-                    $file = $row->file;
+                    $assignment_name = $row->assignment_name;
+                    $instruction = $row->instruction;
+             
+                    $mark = $row->mark;
+                    $get_mark=$row->get_mark;
                     $date = $row->date;
+                    $submitin_date = $row->submitin_date;
                     $course_name = $row->course_name;
-                  
-                    $download_url = route('note_download', ['file_note'=>$file]);
-                    $download_btn = "<a href=\"$download_url\" target=\"_blank\"><span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-download\"></span></a>";
-         
-                   //$action = "$edit_btn $delete_btn";
                     $temp = array();
                     array_push($temp, $id);
-                    array_push($temp, $note_name);
+                    array_push($temp, $assignment_name);
                     array_push($temp, $course_name);
-                    array_push($temp, $note);
+                    array_push($temp, $instruction);
                     array_push($temp, $date);
-                    array_push($temp, $download_btn);
+                    array_push($temp, $submitin_date);
+                    array_push($temp, $mark);
+                    array_push($temp, $get_mark);
+
     
                     array_push($data, $temp);
+                    
                 }
             }
 
@@ -87,7 +90,5 @@ class StudentAllResultController extends Controller
 
     }
 }
-
-
 
 
