@@ -129,7 +129,7 @@ class TeacherCheckAssignmentController extends Controller
                    // ->join('course_teachers', 'teachers.id', 'course_teachers.teacher_id')
 
                     ->where('teachers.email', $data->email )
-                    ->select('return_assignments.id','return_assignments.get_mark','return_assignments.submitin_date','assignments.assignment_name','assignments.instruction','assignments.file','assignments.mark','assignments.date','courses.course_name','return_assignments.status')
+                    ->select('return_assignments.id','return_assignments.get_mark','return_assignments.submitin_date','return_assignments.return_file','assignments.assignment_name','assignments.instruction','assignments.file','assignments.mark','assignments.date','courses.course_name','return_assignments.status')
                     ->get();
 
         if ($get_assignment->count() >0  ) {
@@ -142,13 +142,13 @@ class TeacherCheckAssignmentController extends Controller
 
                     $assignment_name = $row->assignment_name;
                     $instruction = $row->instruction;
-                    $file = $row->file;
+                    $file = $row->return_file;
                     $mark = $row->mark;
                     $get_mark=$row->get_mark;
                     $date = $row->date;
                     $submitin_date = $row->submitin_date;
                     $course_name = $row->course_name;
-                  
+                   // dd($file);
                     $edit_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='update_assignment_modal(\"$id\", \"$assignment_name\", \"$instruction\", \"$mark\",\"$get_mark\", \"$date\",\"$submitin_date\")' data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-edit\"></span></a>";
                     $delete_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='show_delete_modal(\"$id\", \"$assignment_name\")' data-placement=\"top\" title=\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>";
         
@@ -167,6 +167,7 @@ class TeacherCheckAssignmentController extends Controller
                     array_push($temp, $edit_btn);
     
                     array_push($data, $temp);
+                    
                 }
             }
 

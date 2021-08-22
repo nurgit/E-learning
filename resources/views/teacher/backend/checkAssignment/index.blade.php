@@ -29,7 +29,7 @@
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
                 <tr class="replace-inputs">
-                    <th>Assignment Id</th>
+                    <th>Id</th>
                     <th>Assignment name</th>
                     <th>Courses</th>
                     <th>Instruction</th>
@@ -262,7 +262,7 @@
         }
 
   
-        function update_assignment_modal(idAssignment, assignment_name,instruction,mark,get_mark,date,submitin_date) {
+        function update_assignment_modal(idAssignment, assignment_name,instruction,mark,get_mark,date,submitin_date,) {
             $('#idAssignment').val(idAssignment);
             $('#assignment_name').val(assignment_name);
             $('#instruction').val(instruction);
@@ -270,8 +270,9 @@
             $('#mget_markark').val(get_mark);
             $('#date').val(date);
             $('#submitin_date').val(submitin_date);
+           // $('#file').val(file);
           
-
+            
             $('#update_assignment_modal').modal('show');
         }
 

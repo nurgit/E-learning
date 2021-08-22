@@ -76,13 +76,13 @@
 
                          
 
-                    <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
+                    {{-- <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
                         <a href="{{url('teacher/quz')}}">
                             <i class="entypo-book"></i>
                             <span class="title">QUZ </span>
                         </a>
 
-                    </li>
+                    </li> --}}
           
 
                 {{-- <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
