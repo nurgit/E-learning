@@ -51,10 +51,7 @@ use GuzzleHttp\Middleware;
 
 //###################################
 
-// download routing 
-Route::get('{file}', [StudentAssignmentController::class, 'download'])->name('download');
-Route::get('{file_assignment}', [TeacherCheckAssignmentController::class, 'download'])->name('check_assignment_download');
-Route::get('{file_note}', [StudentAssignmentController::class, 'download'])->name('note_download');
+
 
 Route::get('/', [HomeController::class,'index']);
 
@@ -170,9 +167,13 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
 
     Route::post('/get_lecture_notes_data', [TeacherLectureNoteController ::class, 'fetch_lecture_notes_data']);
     
-    
-    
+
 });
+    
+    // download routing 
+    Route::get('{file}', [StudentAssignmentController::class, 'download'])->name('download');
+    Route::get('{file_assignment}', [TeacherCheckAssignmentController::class, 'download'])->name('check_assignment_download');
+    Route::get('{file_note}', [StudentAssignmentController::class, 'download'])->name('note_download');
 
 
 
