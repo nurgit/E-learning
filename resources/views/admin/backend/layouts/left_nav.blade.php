@@ -60,13 +60,6 @@
                     </a>
 
                 </li>
-                <li class="{{ 'sales_history' == request()->path() ? 'active' : ''}}">
-                    <a href="{{route('admin.tutorial')}}">
-                        <i class="entypo-play"></i>
-                        <span class="title">Tutorial</span>
-                    </a>
-
-                </li>
 
 
 			</ul>
