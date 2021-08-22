@@ -1,5 +1,5 @@
 @extends('teacher.backend.layouts.master')
-@section('page_header','Upload Assignment')
+@section('page_header',' Check Assignment')
 @section('page_links')
     <link rel="stylesheet" href="{{ asset('backend/assets/js/datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/js/select2/select2.css') }}">
@@ -25,20 +25,21 @@
     @include('backend.error.error_msg')
     <div class="panel panel-primary" data-collapsed="0">
         <div class="panel-body">
-            <div class="form-group">
-                <button type="button" onclick="jQuery('#add_assignment_modal').modal('show')" class="btn btn-primary btn-icon icon-left"><i class="entypo-plus"></i>Add Instructor</button>
-            </div>
+            
             <table class="table table-bordered datatable" id="student_table">
                 <thead>
                 <tr class="replace-inputs">
-                    <th>Assignment Id</th>
+                    <th>Id</th>
                     <th>Assignment name</th>
                     <th>Courses</th>
                     <th>Instruction</th>
                     <th>Mark</th>
-                    <th>dateline</th>
-                    <th>Action</th>
-               
+                    <th>Get Mark</th>
+                    <th>Dateline</th>
+                    <th>Submited Date</th>
+                    <th>Download</th>
+                    {{-- <th>Action</th> --}}
+                    <th> Add Mark</th>
 
 
                     
@@ -48,131 +49,35 @@
 
                 </tbody>
             </table>
-            <div id="add_assignment_modal" class="modal fade"
-                 role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <form action="{{url('teacher/assignment_uoload')}}" class="form-horizontal form-groups-bordered validate"
-                    method="post" role="form" id="add_student_form" enctype="multipart/form-data">
-                  @csrf
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h4 class="modal-title" style="text-align: center">Add Assignment</h4>
-                      </div>
-                      <div class="modal-body">
-                          <div class="form-group">
-                              <label for="" class="col-sm-3 control-label">Assignment Name <span style="color: red">*</span> </label>
-                              <div class="col-sm-7">
-                                  <input type="text" name="add_assignment_name" id="add_assignment_name"
-                                         class="form-control"
-                                         data-validate="required"
-                                         placeholder=""
-                                 
-                                  >
-                                  <span id="name_err"></span>
-                              </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Course <span style="color: red">*</span> </label>
-                            <div class="col-sm-7">
-                                {{-- <input type="text" name="assignment_name" id="assignment_name"
-                                       class="form-control"
-                                       data-validate="required"
-                                       placeholder=""
-                               
-                                > --}}
-
-                                <select  aria-label="Default select example" class="form-control" name="course_id"id="course_id">
-                                    <option selectedname="course" id="course">Please choose a course</option>
-                                    @foreach ($get_course as $courses)
-                                    <option value="{{$courses->id}}">{{$courses->course_name}}</option>
-                                    @endforeach
-                                  
-                                </select>
-                                <span id="name_err"></span>
-                            </div>
-                        </div>
-                          <div class="form-group">
-                               <label for="" class="col-sm-3 control-label">Instruction <span style="color: red">*</span> </label>
-                               <div class="col-sm-7">
-                                   <input type="text" name="add_instruction" id="add_instruction"
-                                       class="form-control"
-                                       data-validate="required"
-                                       placeholder=""
-                              
-                                   >
-                                   <span id="name_err"></span>
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="" class="col-sm-3 control-label">Mark <span style="color: red">*</span> </label>
-                               <div class="col-sm-7">
-                                   <input type="text" name="add_mark" id="add_mark"
-                                          class="form-control"
-                                          data-validate="required"
-                                          placeholder=""
-                                        
-                                  
-                                   >
-                                   <span id="name_err"></span>
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="" class="col-sm-3 control-label">Retarn date <span style="color: red">*</span> </label>
-                               <div class="col-sm-7">
-                                   <input type="date" name="add_date" id="add_date"
-                                          class="form-control"
-                                          data-validate="required"
-                                          placeholder=""
-                                  
-                                   >
-                                   <span id="name_err"></span>
-                               </div>
-                           </div>
-                          
-                           {{--  --}}
-                           <div class="form-group">
-                               <label for="" class="col-sm-3 control-label">Upload File<span style="color: red">*</span> </label>
-                               <div class="col-sm-7">
-                                   <input type="file" name="file" id="file"
-                                       class="form-control"
-                                       data-validate="required"
-                                       placeholder=""
-                                   >
-                                   <span id="name_err"></span>
-                               </div>
-                           </div>
-                           {{--  --}}
-
-
-
-                          {{-- <input type="hidden" id="idAssignment" name="idAssignment"> --}}
-                      </div>
-                      <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" id="add_btn">Save</button>
-                        <button type="button" class="btn btn-white"
-                                data-dismiss="modal">Cancel
-                        </button>
-                    </div>
-                  </div>
-              </form>
-                </div>
-            </div>
+            
             <div id="update_assignment_modal" class="modal fade"
             role="dialog" tabindex="-1">
            <div class="modal-dialog">
 
                <!-- Modal content-->
-               <form action="{{url('teacher/assignment_update')}}" class="form-horizontal form-groups-bordered validate"
+               <form action="{{url('teacher/return_assignments_marking')}}" class="form-horizontal form-groups-bordered validate"
                      method="post" role="form" id="edit_generic_name_form" enctype="multipart/form-data">
                    @csrf
                    <div class="modal-content">
                        <div class="modal-header">
-                           <h4 class="modal-title" style="text-align: center">Update Assignment</h4>
-                       </div>
+                           <h4 class="modal-title" style="text-align: center">Give  Assignmen Mark</h4>
+
                        <div class="modal-body">
+
+                    </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Give  Mark <span style="color: red">*</span> </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="get_mark" id="get_mark"
+                                            class="form-control"
+                                            data-validate="required"
+                                            placeholder=""
+                                    
+                                    
+                                    >
+                                    <span id="name_err"></span>
+                                </div>
+                            </div>
                            <div class="form-group">
                                <label for="" class="col-sm-3 control-label">Assignment Name <span style="color: red">*</span> </label>
                                <div class="col-sm-7">
@@ -180,7 +85,7 @@
                                           class="form-control"
                                           data-validate="required"
                                           placeholder=""
-                                  
+                                  readonly
                                    >
                                    <span id="name_err"></span>
                                </div>
@@ -192,7 +97,7 @@
                                         class="form-control"
                                         data-validate="required"
                                         placeholder=""
-                               
+                               readonly
                                     >
                                     <span id="name_err"></span>
                                 </div>
@@ -204,27 +109,44 @@
                                            class="form-control"
                                            data-validate="required"
                                            placeholder=""
-                                
-                                   
+                                           readonly
+                                   readonly
                                     >
                                     <span id="name_err"></span>
                                 </div>
                             </div>
+
+
+
                             <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Assignment submition date <span style="color: red">*</span> </label>
+                                <label for="" class="col-sm-3 control-label">Dateline <span style="color: red">*</span> </label>
                                 <div class="col-sm-7">
                                     <input type="date" name="date" id="date"
                                            class="form-control"
                                            data-validate="required"
                                            placeholder=""
-                                   
+                                   readonly
                                     >
                                     <span id="name_err"></span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Submited Date <span style="color: red">*</span> </label>
+                                <div class="col-sm-7">
+                                    <input type="date" name="submitin_date" id="submitin_date"
+                                           class="form-control"
+                                           data-validate="required"
+                                           placeholder=""
+                                   readonly
+                                    >
+                                    <span id="name_err"></span>
+                                </div>
+                            </div>
+
+
                            
                             {{--  --}}
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Upload File<span style="color: red">*</span> </label>
                                 <div class="col-sm-7">
                                     <input type="file" name="file" id="file"
@@ -234,13 +156,13 @@
                                     >
                                     <span id="name_err"></span>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{--  --}}
 
 
 
                            <input type="hidden" id="idAssignment" name="idAssignment">
-                           <input type="hidden" id="p_file" name="p_file">
+              
                        </div>
                        <div class="modal-footer">
                            <button type="submit" class="btn btn-success" id="edit_btn">Update</button>
@@ -252,7 +174,7 @@
                </form>
            </div>
        </div>
-            <div id="delete_assignment_modal" class="modal fade"
+            {{-- <div id="delete_assignment_modal" class="modal fade"
                  role="dialog" tabindex="-1">
                 <div class="modal-dialog">
 
@@ -280,7 +202,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
@@ -303,7 +225,7 @@
                 dom: 'Bfrtip',
                 "ajax": {
                     "type": 'POST',
-                    "url": '{{url('teacher/get_assignments_data')}}',
+                    "url": '{{url('teacher/get_check_assignments_data')}}',
                     "data" : {
                         "_token": "{{ csrf_token() }}"
                     },
@@ -340,14 +262,17 @@
         }
 
   
-        function update_assignment_modal(idAssignment, assignment_name,instruction,mark,date,p_file) {
+        function update_assignment_modal(idAssignment, assignment_name,instruction,mark,get_mark,date,submitin_date,) {
             $('#idAssignment').val(idAssignment);
             $('#assignment_name').val(assignment_name);
             $('#instruction').val(instruction);
             $('#mark').val(mark);
+            $('#mget_markark').val(get_mark);
             $('#date').val(date);
-            $('#p_file').val(p_file);
-
+            $('#submitin_date').val(submitin_date);
+           // $('#file').val(file);
+          
+            
             $('#update_assignment_modal').modal('show');
         }
 

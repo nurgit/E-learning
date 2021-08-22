@@ -66,7 +66,7 @@
 							</a>
 						</li>
 						<li class="{{ 'cleared_sales_report' == request()->path() ? 'active' : ''}}">
-							<a href="{{url('cleared_sales_report')}}">
+							<a href="{{url('teacher/checkAssignment')}}">
                                 <i class="entypo-check"></i>
 							<span class="title">Check Assignment</span>
                         </a>
@@ -76,13 +76,13 @@
 
                          
 
-                    <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
+                    {{-- <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
                         <a href="{{url('teacher/quz')}}">
                             <i class="entypo-book"></i>
                             <span class="title">QUZ </span>
                         </a>
 
-                    </li>
+                    </li> --}}
           
 
                 {{-- <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">

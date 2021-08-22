@@ -53,7 +53,7 @@
                     </a>
 
                 </li>
-                <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
+                {{-- <li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
                     <a href="{{url('student/quz')}}">
                         <i class="entypo-book"></i>
                         <span class="title">QUZ </span>
@@ -66,7 +66,7 @@
                         <span class="title">Tutorials </span>
                     </a>
 
-                </li>
+                </li> --}}
 				<li class="{{ 'inventory' == request()->path() ? 'active' : ''}}">
                     <a href="{{url('student/allResult')}}">
                         <i class="entypo-book"></i>

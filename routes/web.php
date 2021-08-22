@@ -27,6 +27,8 @@ use App\Http\Controllers\Teacher\TeacherAssignmentController;
 use App\Http\Controllers\Teacher\TeacherQUZController;
 use App\Http\Controllers\Teacher\TeacherTestController;
 use App\Http\Controllers\Teacher\TeacherLectureNoteController;
+use App\Http\Controllers\Teacher\TeacherCheckAssignmentController;
+
 
 use App\Http\Controllers\Auth\LoginController;
 
@@ -136,6 +138,10 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
 
     Route::post('assignment_delete',[TeacherAssignmentController::class,'delete']);
 
+    //Check Assignment
+    Route::get('checkAssignment',[TeacherCheckAssignmentController::class,'index']);
+    Route::post('return_assignments_marking',[TeacherCheckAssignmentController::class,'update']);
+    
     //QUZ
     Route::get('quz',[TeacherQUZController::class,'index']);
     //Test
@@ -151,6 +157,8 @@ Route::group([ 'prefix'=>'teacher', 'middleware'=>['authCheck']], function(){
     Route::post('/get_courses_data', [TeacherCourseController::class, 'fetch_courses_data']);
     Route::post('/get_students_data', [TeacherStudentController::class, 'fetch_students_data']);
     Route::post('/get_assignments_data', [TeacherAssignmentController::class, 'fetch_assignments_data']);
+    Route::post('/get_check_assignments_data', [TeacherCheckAssignmentController::class, 'fetch_check_assignments_data']);
+
     Route::post('/get_lecture_notes_data', [TeacherLectureNoteController ::class, 'fetch_lecture_notes_data']);
     
     
