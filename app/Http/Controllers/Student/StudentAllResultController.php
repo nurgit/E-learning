@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentAllResultController extends Controller
 {
-    public function index(){
-        $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        return view('student.backend.allResult.index', $data);
-    }
 
     
     public function index(){
@@ -27,7 +24,7 @@ class StudentAllResultController extends Controller
         $data = [];
         $data['main_menu'] = "assignment";
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        return view('student.backend.lectureNote.index',compact('get_course'))->with($data);
+        return view('student.backend.allResult.index',compact('get_course'))->with($data);
 
     }
 
@@ -93,4 +90,4 @@ class StudentAllResultController extends Controller
 
 
 
-}
+
