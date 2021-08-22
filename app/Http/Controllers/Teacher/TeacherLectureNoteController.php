@@ -120,7 +120,7 @@ class TeacherLectureNoteController extends Controller
     {
 
 
-        if ( $lecture_note =Lecture_note::where('id',$request->idLectureNote)->get()->first())   {
+        if ( $lecture_note =Lecture_note::where('id',$request->dlt_idLectureNote)->get()->first())   {
 
             $lecture_note->status= 0;
 

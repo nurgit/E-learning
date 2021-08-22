@@ -151,7 +151,8 @@ class TeacherCheckAssignmentController extends Controller
                    // dd($file);
                     $edit_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='update_assignment_modal(\"$id\", \"$assignment_name\", \"$instruction\", \"$mark\",\"$get_mark\", \"$date\",\"$submitin_date\")' data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-edit\"></span></a>";
                     $delete_btn = "<a href=\"javascript:void(0)\"><span data-toggle=\"tooltip\" onclick='show_delete_modal(\"$id\", \"$assignment_name\")' data-placement=\"top\" title=\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>";
-        
+                    $download_url = route('check_assignment_download', ['file_assignment'=>$file]);
+                    $download_btn = "<a href=\"$download_url\" target=\"_blank\"><span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"glyphicon glyphicon-download\"></span></a>";
          
                    $action = "$edit_btn $delete_btn";
                     $temp = array();
@@ -163,7 +164,7 @@ class TeacherCheckAssignmentController extends Controller
                     array_push($temp, $get_mark);
                     array_push($temp, $date);
                     array_push($temp, $submitin_date);
-                    array_push($temp, $file);
+                    array_push($temp, $download_btn);
                     array_push($temp, $edit_btn);
     
                     array_push($data, $temp);

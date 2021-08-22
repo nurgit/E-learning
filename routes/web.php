@@ -89,6 +89,8 @@ Route::group([ 'prefix'=>'admin' ], function(){
 
 });
 Route::get('{file}', [StudentAssignmentController::class, 'download'])->name('download');
+Route::get('{file_assignment}', [TeacherCheckAssignmentController::class, 'download'])->name('check_assignment_download');
+
 //Student Group
 Route::group([ 'prefix'=>'student', 'middleware'=>['authCheck']], function(){
     Route::get('dashboard',[StudentController::class,'index'])->name('student.dashboard');

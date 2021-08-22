@@ -343,7 +343,7 @@
             $('#update_LectureNite_modal').modal('show');
         }
 
-        function show_delete_modal(idLectureNote, nombre) {
+        function show_delete_modal(dlt_idLectureNote, nombre) {
             var x = document.getElementById('delete_lectureNote');
             x.innerHTML = nombre;
             $('#dlt_idLectureNote').val(dlt_idLectureNote);
