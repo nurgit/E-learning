@@ -66,7 +66,7 @@
 							</a>
 						</li>
 						<li class="{{ 'cleared_sales_report' == request()->path() ? 'active' : ''}}">
-							<a href="{{url('cleared_sales_report')}}">
+							<a href="{{url('teacher/checkAssignment')}}">
                                 <i class="entypo-check"></i>
 							<span class="title">Check Assignment</span>
                         </a>
