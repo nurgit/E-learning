@@ -71,9 +71,14 @@ class AdminStudentController extends Controller
         abort_if(!$student, 404);
         $student->student_name= $request->student_name;
         $student->email= $request->email;
-    
-
-        if ($student->save()) {
+        $user = new User();
+        $user->name = $request->student_name;
+        $user->email = $request->email;
+        $pass = "welcome123";
+        $user->role_id= 2;
+        $user->password = Hash::make($pass);
+        
+        if ($student->save() && $user->save()) {
             return redirect()->back()->with('success', 'Student Modified Successfully  ');
         } else {
             return redirect()->back()->with('error', 'An error occurred! Please try again.');
